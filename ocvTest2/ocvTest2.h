@@ -8,7 +8,6 @@
 #ifndef OCVTEST2_H_
 #define OCVTEST2_H_
 
-void printImgInfo(Mat&);
-void showImg(Mat&, char*, bool);
+void findCol (const Scalar&, Mat&);
 
 #endif /* OCVTEST2_H_ */
