@@ -1,8 +1,10 @@
 package com.example.eddisapp;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 public class MainActivity extends Activity {
 
@@ -20,4 +22,8 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    /**Called on when the used presses the option button on home screen*/
+    public void appsettings (View v){
+    	Intent settings = new Intent(this, DisplaySettings.class);
+    	
 }
