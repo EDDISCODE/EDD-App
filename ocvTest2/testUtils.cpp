@@ -58,6 +58,11 @@ string testImg(TestImg name){
 	case 5:
 		path = "/home/cgs/school/edd/testimg_256x256-8UC3-ball.jpg";
 		break;
+	case 6:
+			path = "/home/cgs/school/edd/testimg_256x256-8UC3-block2.jpg";
+			break;
+	case 7:
+		path ="/home/cgs/school/edd/testimg_256x256-rectCenter.jpg";
 	default:
 		try {
 			if(path.empty()) throw 1;

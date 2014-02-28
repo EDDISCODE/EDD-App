@@ -23,9 +23,10 @@ using namespace cv;
 
 int main(){
 	Mat img;
-	img = imread(testImg(BALL256_3), 1);
+	//img = imread(testImg(BLK256_3), 1);
+	img = imread(testImg(BALL), 1);
 	imgInfo(img);
-	findCol(Scalar(200, 200, 200), img);
+	findCol(Scalar(255, 255, 255), img);
 	showImg(img);
 }
 
@@ -36,39 +37,47 @@ void findCol(const Scalar& target, Mat& img){
 	Point hits[img.rows*img.cols];
 	int hitsInd = 0;
 	if(img.channels() == 3){
-		for(int i = img.rows - 1; i >= 0; i--){
-			for( int j = img.cols - 1; j >= 0; j--){
-				//compare values
-				Vec3b px = img.at<Vec3b>(j, i);
+		Point pt;
+		for(int i = 0; i < img.rows; i++){
+			for( int j = 0; j < img.cols; j++){
+				pt = Point(j,i);
+				Vec3b px = img.at<Vec3b>(pt);
 				bool same = true;
 				for(int k = 0; k < 3; k++){
-					if(target.val[k] > px.val[k] ){
+					if(target.val[k] != px.val[k] ){
 						same = false;
 					}
-				}
+			}
+
 				if(same){
-					hits[hitsInd] = Point(j, i);
+					hits[hitsInd] = pt;
 					hitsInd++;
+					printpt(pt);
 				}
 			}
 		}
 	}
-	else if(img.channels() == 1){
-		for(int i = img.rows - 1; i >= 0; i--) {
-			for(int j = img.cols -1 ; j >= 0; j--) {
-				if(target.val[0] == (int)(img.at<uchar>(j,i)) ) {
-					hits[hitsInd] = Point(j, i);
-					hitsInd++;
-				}
-			}
-		}
+	else std::cout << "ERROR: invalid channels" <<std::endl;
+
+	if(hitsInd > 0) {
+		int avgX = 0;
+		for(int i = hitsInd-1; i >= 0; i--)
+			avgX += hits[i].x;
+		avgX /= hitsInd;
+		int avgY = 0;
+		for(int i = hitsInd-1; i >= 0; i--)
+			avgY += hits[i].y;
+		avgY /= hitsInd;
+
+		Point avgP(avgX, avgY);
+		Point p1, p2;
+		int offset = 35;
+		p1 = Point(avgP.x - offset, avgP.y -offset);
+		p2 = Point(avgP.x + offset, avgP.y + offset);
+		std::cout << hitsInd <<std::endl;
+		printpt(avgP);
+		rectangle(img, p1, p2, Scalar(0,0,255));
+		circle(img, avgP, 3, Scalar(0,0,255));
 	}
-	Point p1, p2;
-	p1 = hits[hitsInd - 1];
-	p2 = hits[500];
-	printpt(p1);
-	printpt(p2);
-	std::cout << hitsInd;
-	rectangle(img, p1, p2, Scalar(0,0,255));
 }
 
