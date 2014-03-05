@@ -5,20 +5,16 @@
  *      Author: cgs
  */
 
-#include "cv.h"
 #include <iostream>
-#include "highgui.h"
-
-using namespace cv;
 #include "testUtils.h"
 
 
 //Prints basic info about image
 void imgInfo(const Mat& img){
 	std::cout << "Type: " << img.type()
-			<<"  Channels: " << img.channels()
-			<< "   Depth:" << img.depth()
-			<< std::endl;
+					<<"  Channels: " << img.channels()
+					<< "   Depth:" << img.depth()
+					<< std::endl;
 }
 
 // Displays image in new window
@@ -36,7 +32,7 @@ void printpt(const Point& p, int flags){
 	if(flags == 1) std::cout << std::endl;
 	else if(flags == 2) std::cout << " ";
 }
- //return path of named TestImg
+//return path of named TestImg
 string testImg(TestImg name){
 	string path;
 	switch(name){
@@ -53,10 +49,16 @@ string testImg(TestImg name){
 		path = "/home/cgs/school/edd/testimg_256x256-8UC3-block.jpg";
 		break;
 	case 4:
-			path = "/home/cgs/school/edd/testimg_256x256-8UC1-block.jpg";
-			break;
+		path = "/home/cgs/school/edd/testimg_256x256-8UC1-block.jpg";
+		break;
 	case 5:
 		path = "/home/cgs/school/edd/testimg_256x256-8UC3-ball.jpg";
+		break;
+	case 6:
+		path = "/home/cgs/school/edd/testimg_256x256-8UC3-block2.jpg";
+		break;
+	case 7:
+		path ="/home/cgs/school/edd/testimg_256x256-rectCenter.jpg";
 		break;
 	default:
 		try {

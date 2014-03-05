@@ -1,0 +1,14 @@
+/*
+ * testUtils.h
+ *
+ *  Created on: Feb 26, 2014
+ *      Author: cgs
+ */
+
+#ifndef TESTUTILS_H_
+#define TESTUTILS_H_
+
+class testUtils {
+};
+
+#endif /* TESTUTILS_H_ */
