@@ -8,6 +8,11 @@
 #ifndef TESTUTILS_H_
 #define TESTUTILS_H_
 
+#include "cv.h"
+#include "highgui.h"
+
+using namespace cv;
+
 // Put names of test images here for easy reference
 enum TestImg{ELE, E=0, ELEPHANT=0, OLD_BALL,
 			BLK16_3, BLK256_3, BLK256_1, BALL,

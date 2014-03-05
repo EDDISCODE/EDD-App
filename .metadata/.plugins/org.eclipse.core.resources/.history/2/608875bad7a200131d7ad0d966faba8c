@@ -1,0 +1,14 @@
+/*
+ * FaceFinder.h
+ *
+ *  Created on: Mar 3, 2014
+ *      Author: cgs
+ */
+
+#ifndef FACEFINDER_H_
+#define FACEFINDER_H_
+
+class FaceFinder {
+};
+
+#endif /* FACEFINDER_H_ */
