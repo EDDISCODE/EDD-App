@@ -1,0 +1,20 @@
+/*
+ * FaceFinder.cpp
+ *
+ *  Created on: Mar 3, 2014
+ *      Author: cgs
+ */
+
+#include <iostream>
+#include "testUtils.h"
+#include "FaceFinder.h"
+
+
+FaceFinder::FaceFinder() {
+
+}
+
+FaceFinder::FaceFinder(Mat& img) {
+
+}
+

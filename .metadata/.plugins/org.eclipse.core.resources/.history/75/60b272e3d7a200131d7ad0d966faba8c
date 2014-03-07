@@ -1,0 +1,17 @@
+/*
+ * FaceFinder.cpp
+ *
+ *  Created on: Mar 3, 2014
+ *      Author: cgs
+ */
+
+#include "cv.h"
+#include "highgui.h"
+#include <iostream>
+#include "testUtils.h"
+#include "FaceFinder.h"
+
+void FaceFinder::FaceFinder() {
+
+}
+

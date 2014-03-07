@@ -1,0 +1,21 @@
+/*
+ * FaceFinder.h
+ *
+ *  Created on: Mar 3, 2014
+ *      Author: cgs
+ */
+
+#ifndef FACEFINDER_H_
+#define FACEFINDER_H_
+
+#include "cv.h"
+#include "highgui.h"
+
+using namespace cv;
+
+class FaceFinder {
+	FaceFinder();
+	FaceFinder(Mat& img);
+};
+
+#endif /* FACEFINDER_H_ */
