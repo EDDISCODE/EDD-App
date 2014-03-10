@@ -1,5 +1,5 @@
 EDD-App
 =======
 
-This repository is the code for the image recognition app
-The current version is a test of C's first cascade idea (v1).
+This repository is the code for our group's image recognition app. 
+Status as of 3/12/14: Testing Face Recognition.
