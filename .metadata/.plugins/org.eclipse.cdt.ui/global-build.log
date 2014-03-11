@@ -1,1097 +1,13 @@
-13:25:21 **** Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:29:20: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-         showImg(img);
-                    ^
-Finished building: ../ocvTest2.cpp
- 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../testUtils.cpp: In function 'std::string testImg(TestImg)':
-../testUtils.cpp:69:20: error: expected '}' at end of input
-         return path;
-                    ^
-subdir.mk:21: recipe for target 'testUtils.o' failed
-make: *** [testUtils.o] Error 1
-13:25:41 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../testUtils.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:27:39 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:38:47 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:38:52 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:38:54 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:38:56 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:38:57 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:39:12 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:39:12 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:39:13 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:39:13 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/libopencv_calib3d.so -l/lib/libopencv_contrib.so -l/lib/libopencv_core.so -l/lib/libopencv_features2d.so -l/lib/libopencv_flann.so -l/lib/libopencv_gpu.so -l/lib/libopencv_highgui.so -l/lib/libopencv_imgproc.so -l/lib/libopencv_legacy.so -l/lib/libopencv_ml.so -l/lib/libopencv_nonfree.so -l/lib/libopencv_objdetect.so -l/lib/libopencv_ocl.so -l/lib/libopencv_photo.so -l/lib/libopencv_stitching.so -l/lib/libopencv_superres.so -l/lib/libopencv_ts.a -l/lib/libopencv_video.so -l/lib/libopencv_videostab.so
-/usr/bin/ld: cannot find -l/usr/lib/libopencv_calib3d.so
-makefile:44: recipe for target 'ocvTest2' failed
-/usr/bin/ld: cannot find -l/lib/libopencv_contrib.so
-/usr/bin/ld: cannot find -l/lib/libopencv_core.so
-/usr/bin/ld: cannot find -l/lib/libopencv_features2d.so
-/usr/bin/ld: cannot find -l/lib/libopencv_flann.so
-/usr/bin/ld: cannot find -l/lib/libopencv_gpu.so
-/usr/bin/ld: cannot find -l/lib/libopencv_highgui.so
-/usr/bin/ld: cannot find -l/lib/libopencv_imgproc.so
-/usr/bin/ld: cannot find -l/lib/libopencv_legacy.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ml.so
-/usr/bin/ld: cannot find -l/lib/libopencv_nonfree.so
-/usr/bin/ld: cannot find -l/lib/libopencv_objdetect.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ocl.so
-/usr/bin/ld: cannot find -l/lib/libopencv_photo.so
-/usr/bin/ld: cannot find -l/lib/libopencv_stitching.so
-/usr/bin/ld: cannot find -l/lib/libopencv_superres.so
-/usr/bin/ld: cannot find -l/lib/libopencv_ts.a
-/usr/bin/ld: cannot find -l/lib/libopencv_video.so
-/usr/bin/ld: cannot find -l/lib/libopencv_videostab.so
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:41:22 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/opencv_core
-/usr/bin/ld: cannot find -l/usr/lib/opencv_core
-makefile:44: recipe for target 'ocvTest2' failed
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:43:07 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/lib/opencv_core -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:29:20: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-         showImg(img);
-                    ^
-Finished building: ../ocvTest2.cpp
- 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/lib/opencv_core -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../testUtils.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++  -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -l/usr/lib/opencv_core
-/usr/bin/ld: cannot find -l/usr/lib/opencv_core
-makefile:44: recipe for target 'ocvTest2' failed
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:45:06 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:29:20: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-         showImg(img);
-                    ^
-Finished building: ../ocvTest2.cpp
- 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../testUtils.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:46:28 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:47:49 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:22:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:20: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-         showImg(img);
-                    ^
-Finished building: ../ocvTest2.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:47:53 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:38:44 **** Incremental Build of configuration Debug for project edd ****
 make all 
 make: Nothing to be done for 'all'.
-13:48:49 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:39:33 **** Incremental Build of configuration Debug for project edd ****
 make all 
 make: Nothing to be done for 'all'.
-13:48:52 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:39:34 **** Incremental Build of configuration Debug for project edd ****
 make all 
 make: Nothing to be done for 'all'.
-13:48:55 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:49:02 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:22:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:20: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-         showImg(img);
-                    ^
-Finished building: ../ocvTest2.cpp
- 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../testUtils.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:50:26 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:50:28 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:50:32 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:50:38 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:51:43 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:51:49 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:22:0:
-../testUtils.h:2:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:3:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:4:1: warning: "/*" within comment [-Wcomment]
- /*
- ^
-../testUtils.h:18:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:20: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-         showImg(img);
-                    ^
-Finished building: ../ocvTest2.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:11:35 **** Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:17:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:13: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-  showImg(img);
-             ^
-Finished building: ../ocvTest2.cpp
- 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:17:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../testUtils.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:11:50 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:12:15 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-make: Nothing to be done for 'all'.
-13:12:19 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:17:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:13: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-  showImg(img);
-             ^
-Finished building: ../ocvTest2.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:12:41 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:17:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:13: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-  showImg(img);
-             ^
-Finished building: ../ocvTest2.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:29:49 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-In file included from ../FaceFinder.cpp:12:0:
-../FaceFinder.h:12:18: error: return type specification for constructor invalid
-  void FaceFinder();
-                  ^
-../FaceFinder.cpp:18:23: error: expected constructor, destructor, or type conversion before '(' token
- FaceFinder::FaceFinder(Mat& img) {
-                       ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:30:37 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-In file included from ../FaceFinder.cpp:12:0:
-../FaceFinder.h:12:18: error: return type specification for constructor invalid
-  void FaceFinder();
-                  ^
-../FaceFinder.cpp:18:23: error: expected constructor, destructor, or type conversion before '(' token
- FaceFinder::FaceFinder(Mat& img) {
-                       ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:31:11 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-In file included from ../FaceFinder.cpp:12:0:
-../FaceFinder.h:12:18: error: return type specification for constructor invalid
-  void FaceFinder();
-                  ^
-../FaceFinder.cpp:19:1: error: prototype for 'FaceFinder::FaceFinder(cv::Mat&)' does not match any in class 'FaceFinder'
- FaceFinder::FaceFinder(Mat& img) {
- ^
-In file included from ../FaceFinder.cpp:12:0:
-../FaceFinder.h:11:7: error: candidates are: FaceFinder::FaceFinder(const FaceFinder&)
- class FaceFinder {
-       ^
-../FaceFinder.cpp:15:1: error:                 FaceFinder::FaceFinder()
- FaceFinder::FaceFinder() {
- ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:31:50 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-make: *** [FaceFinder.o] Error 1
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-13:31:58 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:32:06 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:32:22 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:33:29 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:16:20: error: 'Mat' does not name a type
- void imgInfo(const Mat&);
-                    ^
-../testUtils.h:16:23: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void imgInfo(const Mat&);
-                       ^
-../testUtils.h:17:14: error: variable or field 'showImg' declared void
- void showImg(Mat&, char* wname="window", bool wait=true);
-              ^
-../testUtils.h:17:14: error: 'Mat' was not declared in this scope
-../testUtils.h:17:14: note: suggested alternatives:
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../FaceFinder.cpp:8:
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
- class CV_EXPORTS Mat
-                  ^
-/usr/include/opencv2/core/core.hpp:1687:18: note:   'cv::Mat'
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:17:18: error: expected primary-expression before ',' token
- void showImg(Mat&, char* wname="window", bool wait=true);
-                  ^
-../testUtils.h:17:20: error: expected primary-expression before 'char'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                    ^
-../testUtils.h:17:42: error: expected primary-expression before 'bool'
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                          ^
-../testUtils.h:18:1: error: 'string' does not name a type
- string testImg(TestImg);
- ^
-../testUtils.h:19:20: error: 'Point' does not name a type
- void printpt(const Point&, int flags = 1);
-                    ^
-../testUtils.h:19:25: error: ISO C++ forbids declaration of 'parameter' with no type [-fpermissive]
- void printpt(const Point&, int flags = 1);
-                         ^
-make: *** [FaceFinder.o] Error 1
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-13:34:55 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:11:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../FaceFinder.cpp
- 
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-Finished building: ../Runner.cpp
- 
-Building file: ../testUtils.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
-In file included from ../testUtils.cpp:13:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-Finished building: ../testUtils.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/../../../../lib/crt1.o: In function `_start':
-(.text+0x20): undefined reference to `main'
-makefile:44: recipe for target 'ocvTest2' failed
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:35:38 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:40:52 **** Incremental Build of configuration Debug for project edd ****
 make all 
 Building file: ../testUtils.cpp
 Invoking: GCC C++ Compiler
@@ -1102,215 +18,76 @@ In file included from ../testUtils.cpp:9:0:
                                                         ^
 Finished building: ../testUtils.cpp
  
-Building target: ocvTest2
+Building target: edd
 Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/../../../../lib/crt1.o: In function `_start':
-makefile:44: recipe for target 'ocvTest2' failed
-(.text+0x20): undefined reference to `main'
-collect2: error: ld returned 1 exit status
-make: *** [ocvTest2] Error 1
-13:36:19 **** Incremental Build of configuration Debug for project ocvTest2 ****
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:40:58 **** Incremental Build of configuration Debug for project edd ****
 make all 
-Building file: ../FaceFinder.cpp
+Building file: ../testUtils.cpp
 Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
 ../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  void showImg(Mat&, char* wname="window", bool wait=true);
                                                         ^
-Finished building: ../FaceFinder.cpp
+Finished building: ../testUtils.cpp
  
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-Finished building: ../Runner.cpp
- 
-Building target: ocvTest2
+Building target: edd
 Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
  
-13:41:51 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:42:08 **** Incremental Build of configuration Debug for project edd ****
 make all 
-Building file: ../FaceFinder.cpp
+Building file: ../testUtils.cpp
 Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
 ../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  void showImg(Mat&, char* wname="window", bool wait=true);
                                                         ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:19:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                      ^
-Finished building: ../FaceFinder.cpp
+Finished building: ../testUtils.cpp
  
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-In file included from ../Runner.cpp:2:0:
-../FaceFinder.h:19:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                      ^
-Finished building: ../Runner.cpp
- 
-Building target: ocvTest2
+Building target: edd
 Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
  
-13:47:02 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:42:18 **** Incremental Build of configuration Debug for project edd ****
 make all 
-Building file: ../FaceFinder.cpp
+Building file: ../testUtils.cpp
 Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
 ../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  void showImg(Mat&, char* wname="window", bool wait=true);
                                                         ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                      ^
-../FaceFinder.cpp: In function 'bool setTarget(std::string)':
-../FaceFinder.cpp:22:2: error: 'img' was not declared in this scope
-  img = imread(path, 1);
-  ^
-../FaceFinder.cpp:23:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:47:33 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                      ^
-../FaceFinder.cpp: In function 'bool setTarget(std::string)':
-../FaceFinder.cpp:22:2: error: 'img' was not declared in this scope
-  img = imread(path);
-  ^
-../FaceFinder.cpp:23:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:48:55 **** Build of configuration Debug for project faceDetect ****
-make all 
-Building file: ../ocvTest2.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ocvTest2.d" -MT"ocvTest2.d" -o "ocvTest2.o" "../ocvTest2.cpp"
-In file included from ../ocvTest2.cpp:21:0:
-../testUtils.h:17:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-../ocvTest2.cpp: In function 'int main()':
-../ocvTest2.cpp:30:13: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-  showImg(img);
-             ^
-Finished building: ../ocvTest2.cpp
+Finished building: ../testUtils.cpp
  
-Building target: faceDetect
+Building target: edd
 Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "faceDetect"  ./ocvTest2.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: faceDetect
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
  
-13:48:56 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:42:26 **** Incremental Build of configuration Debug for project edd ****
 make all 
-Building file: ../FaceFinder.cpp
+Building file: ../testUtils.cpp
 Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
 ../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  void showImg(Mat&, char* wname="window", bool wait=true);
                                                         ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                      ^
-../FaceFinder.cpp: In function 'bool setTarget(std::string)':
-../FaceFinder.cpp:22:2: error: 'img' was not declared in this scope
-  img = imread(path, 1);
-  ^
-../FaceFinder.cpp:23:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-make: *** [FaceFinder.o] Error 1
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-13:49:41 **** Incremental Build of configuration Debug for project faceDetect ****
-make all 
-make: Nothing to be done for 'all'.
-13:49:42 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp: In function 'bool setTarget(std::string)':
-../FaceFinder.cpp:22:2: error: 'm_img' was not declared in this scope
-  m_img = imread(path, 1);
-  ^
-../FaceFinder.cpp:23:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:49:58 **** Incremental Build of configuration Debug for project faceDetect ****
-make all 
-make: Nothing to be done for 'all'.
-13:49:58 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp: In member function 'bool FaceFinder::setTarget(std::string)':
-../FaceFinder.cpp:23:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-Finished building: ../FaceFinder.cpp
+Finished building: ../testUtils.cpp
  
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-In file included from ../Runner.cpp:2:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../Runner.cpp
- 
-Building target: ocvTest2
+Building target: edd
 Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
  
-13:52:44 **** Incremental Build of configuration Debug for project faceDetect ****
-make all 
-make: Nothing to be done for 'all'.
-13:52:44 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:44:14 **** Incremental Build of configuration Debug for project edd ****
 make all 
 Building file: ../FaceFinder.cpp
 Invoking: GCC C++ Compiler
@@ -1320,370 +97,7 @@ In file included from ../FaceFinder.cpp:9:0:
  void showImg(Mat&, char* wname="window", bool wait=true);
                                                         ^
 In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp: In member function 'bool FaceFinder::setTarget(std::string)':
-../FaceFinder.cpp:24:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-Finished building: ../FaceFinder.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:01:32 **** Incremental Build of configuration Debug for project faceDetect ****
-make all 
-make: Nothing to be done for 'all'.
-13:01:33 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../FaceFinder.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:08:42 **** Incremental Build of configuration Debug for project faceDetect ****
-make all 
-make: Nothing to be done for 'all'.
-13:08:42 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../FaceFinder.cpp
- 
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-In file included from ../Runner.cpp:2:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../Runner.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:23:15 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp:34:34: error: no 'std::vector<cv::Rect_<int> > FaceFinder::getLocs()' member function declared in class 'FaceFinder'
- vector<Rect> FaceFinder::getLocs() {
-                                  ^
-make: *** [FaceFinder.o] Error 1
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-13:23:52 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.h:28:15: error: extra qualification 'FaceFinder::' on member 'getLocs' [-fpermissive]
-  vector<Rect> FaceFinder::getLocs();
-               ^
-make: *** [FaceFinder.o] Error 1
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-13:24:08 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../FaceFinder.cpp
- 
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-In file included from ../Runner.cpp:2:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../Runner.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:28:48 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp: In member function 'bool FaceFinder::run()':
-../FaceFinder.cpp:40:74: error: no matching function for call to 'cv::CascadeClassifier::detectMultiScale(cv::Mat&, std::vector<cv::Rect_<int> >&, double, int, cv::Size, cv::Size)'
-  m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, Size(20,20), Size(100, 100));
-                                                                          ^
-../FaceFinder.cpp:40:74: note: candidates are:
-In file included from /usr/include/opencv/cv.h:71:0,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/opencv2/objdetect/objdetect.hpp:395:26: note: virtual void cv::CascadeClassifier::detectMultiScale(const cv::Mat&, std::vector<cv::Rect_<int> >&, double, int, int, cv::Size, cv::Size)
-     CV_WRAP virtual void detectMultiScale( const Mat& image,
-                          ^
-/usr/include/opencv2/objdetect/objdetect.hpp:395:26: note:   no known conversion for argument 5 from 'cv::Size' to 'int'
-/usr/include/opencv2/objdetect/objdetect.hpp:402:26: note: virtual void cv::CascadeClassifier::detectMultiScale(const cv::Mat&, std::vector<cv::Rect_<int> >&, std::vector<int>&, std::vector<double>&, double, int, int, cv::Size, cv::Size, bool)
-     CV_WRAP virtual void detectMultiScale( const Mat& image,
-                          ^
-/usr/include/opencv2/objdetect/objdetect.hpp:402:26: note:   no known conversion for argument 3 from 'double' to 'std::vector<int>&'
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:29:52 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../FaceFinder.cpp
- 
-Building file: ../Runner.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
-In file included from ../Runner.cpp:2:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-Finished building: ../Runner.cpp
- 
-Building target: ocvTest2
-Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
- 
-13:47:38 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp: In constructor 'FaceFinder::FaceFinder()':
-../FaceFinder.cpp:15:8: error: ambiguous overload for 'operator=' (operand types are 'cv::Mat' and 'long int')
-  m_img = NULL;
-        ^
-../FaceFinder.cpp:15:8: note: candidates are:
-In file included from /usr/include/opencv2/core/core.hpp:4855:0,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/opencv2/core/mat.hpp:281:13: note: cv::Mat& cv::Mat::operator=(const cv::Mat&)
- inline Mat& Mat::operator = (const Mat& m)
-             ^
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/opencv2/core/core.hpp:1774:10: note: cv::Mat& cv::Mat::operator=(const Scalar&)
-     Mat& operator = (const Scalar& s);
-          ^
-../FaceFinder.cpp:16:9: error: no match for 'operator=' (operand types are 'std::vector<cv::Rect_<int> >' and 'long int')
-  m_locs = NULL;
-         ^
-../FaceFinder.cpp:16:9: note: candidate is:
-In file included from /usr/include/c++/4.8.2/vector:69:0,
-                 from /usr/include/opencv2/core/core.hpp:63,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = cv::Rect_<int>; _Alloc = std::allocator<cv::Rect_<int> >]
-     vector<_Tp, _Alloc>::
-     ^
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note:   no known conversion for argument 1 from 'long int' to 'const std::vector<cv::Rect_<int> >&'
-../FaceFinder.cpp: In constructor 'FaceFinder::FaceFinder(cv::Mat&)':
-../FaceFinder.cpp:22:9: error: no match for 'operator=' (operand types are 'std::vector<cv::Rect_<int> >' and 'long int')
-  m_locs = NULL;
-         ^
-../FaceFinder.cpp:22:9: note: candidate is:
-In file included from /usr/include/c++/4.8.2/vector:69:0,
-                 from /usr/include/opencv2/core/core.hpp:63,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = cv::Rect_<int>; _Alloc = std::allocator<cv::Rect_<int> >]
-     vector<_Tp, _Alloc>::
-     ^
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note:   no known conversion for argument 1 from 'long int' to 'const std::vector<cv::Rect_<int> >&'
-../FaceFinder.cpp: In constructor 'FaceFinder::FaceFinder(std::string)':
-../FaceFinder.cpp:28:9: error: no match for 'operator=' (operand types are 'std::vector<cv::Rect_<int> >' and 'long int')
-  m_locs = NULL;
-         ^
-../FaceFinder.cpp:28:9: note: candidate is:
-In file included from /usr/include/c++/4.8.2/vector:69:0,
-                 from /usr/include/opencv2/core/core.hpp:63,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = cv::Rect_<int>; _Alloc = std::allocator<cv::Rect_<int> >]
-     vector<_Tp, _Alloc>::
-     ^
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note:   no known conversion for argument 1 from 'long int' to 'const std::vector<cv::Rect_<int> >&'
-../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
-../FaceFinder.cpp:49:29: error: conversion from 'cv::Mat*' to non-scalar type 'cv::Mat' requested
-  Mat dispImg = new Mat(m_img);
-                             ^
-../FaceFinder.cpp:57:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-  showImg(dispImg, "window");
-                           ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:47:58 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
-  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
-                        ^
-../FaceFinder.cpp: In constructor 'FaceFinder::FaceFinder()':
-../FaceFinder.cpp:15:8: error: ambiguous overload for 'operator=' (operand types are 'cv::Mat' and 'long int')
-  m_img = NULL;
-        ^
-../FaceFinder.cpp:15:8: note: candidates are:
-In file included from /usr/include/opencv2/core/core.hpp:4855:0,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/opencv2/core/mat.hpp:281:13: note: cv::Mat& cv::Mat::operator=(const cv::Mat&)
- inline Mat& Mat::operator = (const Mat& m)
-             ^
-In file included from /usr/include/opencv/cv.h:64:0,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/opencv2/core/core.hpp:1774:10: note: cv::Mat& cv::Mat::operator=(const Scalar&)
-     Mat& operator = (const Scalar& s);
-          ^
-../FaceFinder.cpp:16:9: error: no match for 'operator=' (operand types are 'std::vector<cv::Rect_<int> >' and 'long int')
-  m_locs = NULL;
-         ^
-../FaceFinder.cpp:16:9: note: candidate is:
-In file included from /usr/include/c++/4.8.2/vector:69:0,
-                 from /usr/include/opencv2/core/core.hpp:63,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = cv::Rect_<int>; _Alloc = std::allocator<cv::Rect_<int> >]
-     vector<_Tp, _Alloc>::
-     ^
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note:   no known conversion for argument 1 from 'long int' to 'const std::vector<cv::Rect_<int> >&'
-../FaceFinder.cpp: In constructor 'FaceFinder::FaceFinder(cv::Mat&)':
-../FaceFinder.cpp:22:9: error: no match for 'operator=' (operand types are 'std::vector<cv::Rect_<int> >' and 'long int')
-  m_locs = NULL;
-         ^
-../FaceFinder.cpp:22:9: note: candidate is:
-In file included from /usr/include/c++/4.8.2/vector:69:0,
-                 from /usr/include/opencv2/core/core.hpp:63,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = cv::Rect_<int>; _Alloc = std::allocator<cv::Rect_<int> >]
-     vector<_Tp, _Alloc>::
-     ^
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note:   no known conversion for argument 1 from 'long int' to 'const std::vector<cv::Rect_<int> >&'
-../FaceFinder.cpp: In constructor 'FaceFinder::FaceFinder(std::string)':
-../FaceFinder.cpp:28:9: error: no match for 'operator=' (operand types are 'std::vector<cv::Rect_<int> >' and 'long int')
-  m_locs = NULL;
-         ^
-../FaceFinder.cpp:28:9: note: candidate is:
-In file included from /usr/include/c++/4.8.2/vector:69:0,
-                 from /usr/include/opencv2/core/core.hpp:63,
-                 from /usr/include/opencv/cv.h:64,
-                 from ../testUtils.h:11,
-                 from ../FaceFinder.cpp:9:
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = cv::Rect_<int>; _Alloc = std::allocator<cv::Rect_<int> >]
-     vector<_Tp, _Alloc>::
-     ^
-/usr/include/c++/4.8.2/bits/vector.tcc:160:5: note:   no known conversion for argument 1 from 'long int' to 'const std::vector<cv::Rect_<int> >&'
-../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
-../FaceFinder.cpp:57:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-  showImg(dispImg, "window");
-                           ^
-subdir.mk:24: recipe for target 'FaceFinder.o' failed
-make: *** [FaceFinder.o] Error 1
-13:48:27 **** Incremental Build of configuration Debug for project ocvTest2 ****
-make all 
-Building file: ../FaceFinder.cpp
-Invoking: GCC C++ Compiler
-g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
-In file included from ../FaceFinder.cpp:9:0:
-../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
- void showImg(Mat&, char* wname="window", bool wait=true);
-                                                        ^
-In file included from ../FaceFinder.cpp:10:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
   const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
                         ^
 ../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
@@ -1695,17 +109,1576 @@ Finished building: ../FaceFinder.cpp
 Building file: ../Runner.cpp
 Invoking: GCC C++ Compiler
 g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
 In file included from ../Runner.cpp:2:0:
-../FaceFinder.h:20:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
   const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
                         ^
 Finished building: ../Runner.cpp
  
-Building target: ocvTest2
+Building target: edd
 Invoking: GCC C++ Linker
-g++ -L/usr/lib -o "ocvTest2"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_flann -lopencv_highgui -lopencv_imgproc
-Finished building target: ocvTest2
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
  
-13:48:59 **** Incremental Build of configuration Debug for project ocvTest2 ****
+13:44:28 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:44:38 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:44:42 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:44:43 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:44:44 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:44:45 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:44:47 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:45:32 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:45:57 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:46:26 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:47:08 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:21:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:47:27 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:48:00 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:48:05 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:48:16 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:21:24: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                        ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:48:57 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:21:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:49:35 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:13:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:21:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:49:53 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:50:02 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:50:06 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:50:55 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:51:59 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:54:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:52:06 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:53:15 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:25:37 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:27:40 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:27:52 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:28:02 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:28:03 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:28:41 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:28:45 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:28:57 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:29:50 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:56: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat&, char* wname="window", bool wait=true);
+                                                        ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:31:11 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:18: error: expected primary-expression before ',' token
+  showImg(dispImg&, "window");
+                  ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:31:30 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:31:39 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:44:26: error: invalid initialization of non-const reference of type 'cv::Mat&' from an rvalue of type 'cv::Mat'
+  Mat& dispImg = Mat(m_img);
+                          ^
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+make: *** [FaceFinder.o] Error 1
+13:31:46 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:32:17 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:45:19: error: expected primary-expression before ',' token
+  cvtColor(dispImg&, dispImg&, CV_GRAY2BGR);
+                   ^
+../FaceFinder.cpp:45:29: error: expected primary-expression before ',' token
+  cvtColor(dispImg&, dispImg&, CV_GRAY2BGR);
+                             ^
+../FaceFinder.cpp:50:21: error: expected primary-expression before ',' token
+   rectangle(dispImg&, p1, p2, Scalar(0,0,255), 2);
+                     ^
+../FaceFinder.cpp:52:18: error: expected primary-expression before ',' token
+  showImg(dispImg&, "window");
+                  ^
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+make: *** [FaceFinder.o] Error 1
+13:32:30 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:45:29: error: expected primary-expression before ',' token
+  cvtColor(&dispImg, dispImg&, CV_GRAY2BGR);
+                             ^
+../FaceFinder.cpp:50:21: error: expected primary-expression before ',' token
+   rectangle(dispImg&, p1, p2, Scalar(0,0,255), 2);
+                     ^
+../FaceFinder.cpp:52:27: error: invalid initialization of reference of type 'cv::Mat&' from expression of type 'cv::Mat*'
+  showImg(dispImg, "window");
+                           ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error: in passing argument 1 of 'void showImg(cv::Mat&, char*, bool)'
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+      ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:32:40 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:45:40: error: invalid initialization of reference of type 'cv::InputArray {aka const cv::_InputArray&}' from expression of type 'cv::Mat*'
+  cvtColor(dispImg, dispImg, CV_GRAY2BGR);
+                                        ^
+In file included from /usr/include/opencv/cv.h:66:0,
+                 from ../testUtils.h:11,
+                 from ../FaceFinder.h:11,
+                 from ../FaceFinder.cpp:9:
+/usr/include/opencv2/imgproc/imgproc.hpp:1091:19: error: in passing argument 1 of 'void cv::cvtColor(cv::InputArray, cv::OutputArray, int, int)'
+ CV_EXPORTS_W void cvtColor( InputArray src, OutputArray dst, int code, int dstCn=0 );
+                   ^
+../FaceFinder.cpp:50:48: error: no matching function for call to 'rectangle(cv::Mat*&, cv::Point&, cv::Point&, cv::Scalar, int)'
+   rectangle(dispImg, p1, p2, Scalar(0,0,255), 2);
+                                                ^
+../FaceFinder.cpp:50:48: note: candidates are:
+In file included from /usr/include/opencv/cv.h:64:0,
+                 from ../testUtils.h:11,
+                 from ../FaceFinder.h:11,
+                 from ../FaceFinder.cpp:9:
+/usr/include/opencv2/core/core.hpp:2593:19: note: void cv::rectangle(cv::Mat&, cv::Point, cv::Point, const Scalar&, int, int, int)
+ CV_EXPORTS_W void rectangle(CV_IN_OUT Mat& img, Point pt1, Point pt2,
+                   ^
+/usr/include/opencv2/core/core.hpp:2593:19: note:   no known conversion for argument 1 from 'cv::Mat*' to 'cv::Mat&'
+/usr/include/opencv2/core/core.hpp:2598:17: note: void cv::rectangle(cv::Mat&, cv::Rect, const Scalar&, int, int, int)
+ CV_EXPORTS void rectangle(CV_IN_OUT Mat& img, Rect rec,
+                 ^
+/usr/include/opencv2/core/core.hpp:2598:17: note:   no known conversion for argument 1 from 'cv::Mat*' to 'cv::Mat&'
+../FaceFinder.cpp:52:27: error: invalid initialization of reference of type 'cv::Mat&' from expression of type 'cv::Mat*'
+  showImg(dispImg, "window");
+                           ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error: in passing argument 1 of 'void showImg(cv::Mat&, char*, bool)'
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+      ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:32:59 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:28: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(*dispImg, "window");
+                            ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:34:13 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: error: invalid initialization of reference of type 'cv::Mat&' from expression of type 'cv::Mat*'
+  showImg(dispImg, "window");
+                           ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error: in passing argument 1 of 'void showImg(cv::Mat&, char*, bool)'
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+      ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:34:28 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:36:27 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:28: error: invalid initialization of non-const reference of type 'cv::Mat&' from an rvalue of type 'cv::Mat*'
+  showImg(&dispImg, "window");
+                            ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error: in passing argument 1 of 'void showImg(cv::Mat&, char*, bool)'
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+      ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:37:38 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:29: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(*pdispImg, "window");
+                             ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:37:45 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+makefile:44: recipe for target 'edd' failed
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:53: undefined reference to `showImg(cv::Mat&, char*, bool)'
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:38:19 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:29: error: invalid initialization of non-const reference of type 'cv::Mat&' from an rvalue of type 'cv::Mat**'
+  showImg(&pdispImg, "window");
+                             ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error: in passing argument 1 of 'void showImg(cv::Mat&, char*, bool)'
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+      ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:38:33 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:53:28: error: invalid initialization of reference of type 'cv::Mat&' from expression of type 'cv::Mat*'
+  showImg(pdispImg, "window");
+                            ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error: in passing argument 1 of 'void showImg(cv::Mat&, char*, bool)'
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+      ^
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+make: *** [FaceFinder.o] Error 1
+13:38:49 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+makefile:44: recipe for target 'edd' failed
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat&, char*, bool)'
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:39:20 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:60: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat& img, char* wname="window", bool wait=true);
+                                                            ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+makefile:44: recipe for target 'edd' failed
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat&, char*, bool)'
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:39:31 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window");
+                           ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:39:46 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window", true);
+                                 ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:40:15 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+../testUtils.cpp:21:35: warning: character constant too long for its type [enabled by default]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                   ^
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+../testUtils.cpp:21:59: error: invalid conversion from 'int' to 'char*' [-fpermissive]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                                           ^
+../testUtils.cpp: In function 'void showImg(cv::Mat, char*, bool)':
+../testUtils.cpp:21:59: error: default argument given for parameter 2 of 'void showImg(cv::Mat, char*, bool)'
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:6: error: after previous specification in 'void showImg(cv::Mat, char*, bool)'
+ void showImg(Mat img, char* wname="window", bool wait=true);
+      ^
+../testUtils.cpp:21:59: error: default argument given for parameter 3 of 'void showImg(cv::Mat, char*, bool)' [-fpermissive]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                                           ^
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:6: error: after previous specification in 'void showImg(cv::Mat, char*, bool)' [-fpermissive]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+      ^
+subdir.mk:24: recipe for target 'testUtils.o' failed
+make: *** [testUtils.o] Error 1
+13:40:24 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window", true);
+                                 ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+../testUtils.cpp:21:35: warning: character constant too long for its type [enabled by default]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                   ^
+../testUtils.cpp:21:59: error: invalid conversion from 'int' to 'char*' [-fpermissive]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                                           ^
+subdir.mk:24: recipe for target 'testUtils.o' failed
+make: *** [testUtils.o] Error 1
+13:40:58 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+../testUtils.cpp:21:35: warning: character constant too long for its type [enabled by default]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                   ^
+../testUtils.cpp:21:59: error: invalid conversion from 'int' to 'char*' [-fpermissive]
+ void showImg(Mat img, char* wname='window', bool wait=true){
+                                                           ^
+subdir.mk:24: recipe for target 'testUtils.o' failed
+make: *** [testUtils.o] Error 1
+13:41:12 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window", true);
+                                 ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+makefile:44: recipe for target 'edd' failed
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:41:24 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+makefile:44: recipe for target 'edd' failed
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:41:41 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+makefile:44: recipe for target 'edd' failed
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:41:59 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+makefile:44: recipe for target 'edd' failed
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:42:02 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:27: error: conversion from 'int' to 'cv::Mat' is ambiguous
+  showImg(5, "window", true);
+                           ^
+../FaceFinder.cpp:52:27: note: candidates are:
+In file included from /usr/include/opencv/cv.h:64:0,
+                 from ../testUtils.h:11,
+                 from ../FaceFinder.h:11,
+                 from ../FaceFinder.cpp:9:
+/usr/include/opencv2/core/core.hpp:1720:5: note: cv::Mat::Mat(const IplImage*, bool) <near match>
+     Mat(const IplImage* img, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1720:5: note:   no known conversion for argument 1 from 'int' to 'const IplImage* {aka const _IplImage*}'
+/usr/include/opencv2/core/core.hpp:1718:5: note: cv::Mat::Mat(const CvMatND*, bool) <near match>
+     Mat(const CvMatND* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1718:5: note:   no known conversion for argument 1 from 'int' to 'const CvMatND*'
+/usr/include/opencv2/core/core.hpp:1716:5: note: cv::Mat::Mat(const CvMat*, bool) <near match>
+     Mat(const CvMat* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1716:5: note:   no known conversion for argument 1 from 'int' to 'const CvMat*'
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error:   initializing argument 1 of 'void showImg(cv::Mat, char*, bool)'
+ void showImg(Mat img, char* wname="window", bool wait=true);
+      ^
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+make: *** [FaceFinder.o] Error 1
+13:42:09 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window", true);
+                                 ^
+Finished building: ../FaceFinder.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+makefile:44: recipe for target 'edd' failed
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:43:59 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+../FaceFinder.cpp:52:19: warning: character constant too long for its type [enabled by default]
+  showImg(dispImg, 'window', true);
+                   ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: error: invalid conversion from 'int' to 'char*' [-fpermissive]
+  showImg(dispImg, 'window', true);
+                                 ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error:   initializing argument 2 of 'void showImg(cv::Mat, char*, bool)' [-fpermissive]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+      ^
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+make: *** [FaceFinder.o] Error 1
+13:44:23 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:35: warning: character constant too long for its type [enabled by default]
+ void showImg(Mat img, char* wname='window', bool wait=true);
+                                   ^
+../FaceFinder.cpp:52:19: warning: character constant too long for its type [enabled by default]
+  showImg(dispImg, 'window', true);
+                   ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: error: invalid conversion from 'int' to 'char*' [-fpermissive]
+ void showImg(Mat img, char* wname='window', bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: error: invalid conversion from 'int' to 'char*' [-fpermissive]
+  showImg(dispImg, 'window', true);
+                                 ^
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:6: error:   initializing argument 2 of 'void showImg(cv::Mat, char*, bool)' [-fpermissive]
+ void showImg(Mat img, char* wname='window', bool wait=true);
+      ^
+make: *** [FaceFinder.o] Error 1
+subdir.mk:24: recipe for target 'FaceFinder.o' failed
+13:44:36 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window", true);
+                                 ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+makefile:44: recipe for target 'edd' failed
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:44:51 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+makefile:44: recipe for target 'edd' failed
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:45:00 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+./FaceFinder.o: In function `FaceFinder::displayLocs()':
+makefile:44: recipe for target 'edd' failed
+/home/cgs/code/edd/Debug/../FaceFinder.cpp:52: undefined reference to `showImg(cv::Mat, char*, bool)'
+collect2: error: ld returned 1 exit status
+make: *** [edd] Error 1
+13:45:25 **** Incremental Build of configuration Debug for project edd ****
+make all 
+Building file: ../FaceFinder.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"FaceFinder.d" -MT"FaceFinder.d" -o "FaceFinder.o" "../FaceFinder.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../FaceFinder.cpp:9:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../FaceFinder.cpp:9:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+../FaceFinder.cpp: In member function 'void FaceFinder::displayLocs()':
+../FaceFinder.cpp:52:33: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+  showImg(dispImg, "window", true);
+                                 ^
+Finished building: ../FaceFinder.cpp
+ 
+Building file: ../Runner.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Runner.d" -MT"Runner.d" -o "Runner.o" "../Runner.cpp"
+In file included from ../FaceFinder.h:11:0,
+                 from ../Runner.cpp:2:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+In file included from ../Runner.cpp:2:0:
+../FaceFinder.h:19:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+                             ^
+Finished building: ../Runner.cpp
+ 
+Building file: ../testUtils.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/opencv -I/usr/include/opencv2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"testUtils.d" -MT"testUtils.d" -o "testUtils.o" "../testUtils.cpp"
+In file included from ../testUtils.cpp:9:0:
+../testUtils.h:22:59: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ void showImg(Mat img, char* wname="window", bool wait=true);
+                                                           ^
+Finished building: ../testUtils.cpp
+ 
+Building target: edd
+Invoking: GCC C++ Linker
+g++  -o "edd"  ./FaceFinder.o ./Runner.o ./testUtils.o   -lopencv_core -lopencv_highgui -lopencv_ml -lopencv_imgproc -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_objdetect -lopencv_legacy -lopencv_flann
+Finished building target: edd
+ 
+13:45:35 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:45:38 **** Incremental Build of configuration Debug for project edd ****
+make all 
+make: Nothing to be done for 'all'.
+13:45:57 **** Incremental Build of configuration Debug for project edd ****
 make all 
 make: Nothing to be done for 'all'.
