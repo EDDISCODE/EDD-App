@@ -51,3 +51,15 @@ void FaceFinder::displayLocs() {
 	}
 	showImg(dispImg, "window", true);
 }
+
+Size FaceFinder::getAvgSize() {
+	int width = 0;
+	int height = 0;
+	for(int i = m_locs.size() - 1; i >= 0; i--) {
+		width += m_locs[i].width;
+		height += m_locs[i].height;
+	}
+	width /= m_locs.size();
+	height /= m_locs.size();
+	return Size(width, height);
+}
