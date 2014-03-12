@@ -16,7 +16,7 @@ class FaceFinder {
 private:
 	Mat m_img;
 	CascadeClassifier m_cc;
-	const std::string m_PATH = "/home/cgs/code/haarcascade_frontalface_alt2.xml";
+	const std::string m_PATH = "/home/cgs/code/edd/haarcascade_frontalface_alt2.xml";
 	// "../haarcascade_frontalface_alt2.xml";
 	std::vector<Rect> m_locs;
 public:
@@ -27,6 +27,7 @@ public:
 	std::vector<Rect> getLocs();
 	bool run();
 	void displayLocs();
+	Size getAvgSize();
 };
 
 #endif /* FACEFINDER_H_ */
