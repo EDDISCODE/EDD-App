@@ -25,6 +25,10 @@ FaceFinder::FaceFinder(std::string imgpath) {
 
 bool FaceFinder::setTarget(std::string imgpath) {
 	m_img = imread(imgpath, 0);	//0 = return grayscale, >0 = 3 channel
+	if(m_img.rows > 1000 || m_img.cols > 1500) {
+		double scaleFac = std::min(1000.0/m_img.rows, 1500.0/m_img.cols);
+		resize(m_img, m_img, Size(0,0), scaleFac, scaleFac);
+	}
 	if(m_img.data != NULL)
 		return true;
 	return false;
@@ -36,7 +40,7 @@ std::vector<Rect> FaceFinder::getLocs() {
 
 bool FaceFinder::run() {
 	if(m_img.data == NULL) return false;
-	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(20,20), Size(100, 100));
+	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(80,80), Size(150, 150));
 	return true;
 }
 
