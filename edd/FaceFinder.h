@@ -8,7 +8,7 @@
 #ifndef FACEFINDER_H_
 #define FACEFINDER_H_
 
-#include "testUtils.h"
+#include "TestUtils.h"
 
 using namespace cv;
 

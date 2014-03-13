@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "testUtils.h"
+#include "TestUtils.h"
 using namespace cv;
 
 //Prints basic info about image
