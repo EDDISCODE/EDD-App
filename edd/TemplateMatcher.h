@@ -7,18 +7,25 @@
 
 #ifndef TEMPLATEMATCHER_H_
 #define TEMPLATEMATCHER_H_
+
 #include "TestUtils.h"
+
 class TemplateMatcher {
 private:
 	Mat m_templ;
 	Mat m_out;
+	Mat m_target;
 	const int m_METHOD = 0;
 	float startScale;
-	bool procTempl(Mat templ);
+	bool templSize();
 public:
+	TemplateMatcher(string targetPath = NULL, Mat* target = NULL);
+	TemplateMatcher(Mat templ, string targetPath = NULL, Mat* target = NULL);
+	TemplateMatcher(string path, string targetPath = NULL, Mat* target = NULL);
 	Point getLoc();
-	bool setTempl(Mat templ);
-	bool setTempl(string path);
+	void setTempl(Mat templ);
+	void setTempl(string path);
+	void run(Mat target);
 };
 
 #endif /* TEMPLATEMATCHER_H_ */
