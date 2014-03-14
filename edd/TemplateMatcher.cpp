@@ -37,3 +37,10 @@ void TemplateMatcher::setTempl(Mat templ) {
 	m_templ = templ;
 }
 
+void TemplateMatcher::templSize(Size sz) {
+	resize(m_templ, m_templ, sz);
+}
+
+void run() {
+
+}

@@ -17,7 +17,6 @@ private:
 	Mat m_target;
 	const int m_METHOD = 0;
 	float startScale;
-	bool templSize();
 public:
 	TemplateMatcher(string targetPath = NULL, Mat* target = NULL);
 	TemplateMatcher(Mat templ, string targetPath = NULL, Mat* target = NULL);
@@ -26,6 +25,7 @@ public:
 	void setTempl(Mat templ);
 	void setTempl(string path);
 	void run(Mat target);
+	void templSize(Size sz);
 };
 
 #endif /* TEMPLATEMATCHER_H_ */
