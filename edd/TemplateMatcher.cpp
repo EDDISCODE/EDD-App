@@ -41,6 +41,11 @@ void TemplateMatcher::templSize(Size sz) {
 	resize(m_templ, m_templ, sz);
 }
 
-void run() {
+void TemplateMatcher::run() {
+	matchTemplate(m_target, m_templ, m_out, CV_TM_SQDIFF);
+	minMaxLoc(m_out, 0, m_min, m_max);
+}
 
+Point TemplateMatcher::getMin() {
+	return m_min;
 }
