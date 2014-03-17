@@ -10,8 +10,6 @@
 
 #include "TestUtils.h"
 
-using namespace cv;
-
 class FaceFinder {
 private:
 	Mat m_img;
@@ -19,6 +17,7 @@ private:
 	const std::string m_PATH = "/home/cgs/code/edd/haarcascade_frontalface_alt2.xml";
 	// "../haarcascade_frontalface_alt2.xml";
 	std::vector<Rect> m_locs;
+
 public:
 	FaceFinder();
 	FaceFinder(Mat& img);
