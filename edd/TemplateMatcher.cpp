@@ -7,48 +7,63 @@
 
 #include "TemplateMatcher.h"
 
-TemplateMatcher::TemplateMatcher(string targetPath, Mat* target, Size templSize) {
+TemplateMatcher::TemplateMatcher() {
 	m_out.data = NULL;
 	m_templ.data = NULL;
-	startScale = 1;
-	if(targetPath.length() > 0)
-		m_target = imread(targetPath, 0);
-	else if(target->data != NULL)
-		m_target = *target;
-	else
-		m_target.data = NULL;
+	m_max = NULL;
+	m_min = NULL;
 }
 
-TemplateMatcher::TemplateMatcher(Mat templ, string targetPath, Mat* target, Size templSize) {
-	TemplateMatcher(targetPath, target, templSize);
+TemplateMatcher::TemplateMatcher(Mat templ) {
+	TemplateMatcher();
 	setTempl(templ);
 }
 
-TemplateMatcher::TemplateMatcher(string path, string targetPath, Mat* target, Size templSize) {
-	TemplateMatcher(targetPath, target, templSize);
-	setTempl(path);
+TemplateMatcher::TemplateMatcher(string templPath) {
+	TemplateMatcher();
+	setTempl(templPath);
+	showImg(m_templ);
 }
 
+
+//sets template
 void TemplateMatcher::setTempl(string path) {
 	m_templ = imread(path, 1);
-	resize(m_templ, m_templ, m_templSize);
+	process(m_templ, m_templ);
 }
-
+//sets template
 void TemplateMatcher::setTempl(Mat templ) {
 	m_templ = templ;
-	resize(m_templ, m_templ, m_templSize);
+	process(m_templ, m_templ);
+}
+//pull edges out of template or target before matching
+void TemplateMatcher::process(Mat& in, Mat out) {
+	Mat x, y;
+	Size blurSize;
+	int xs, ys;
+	xs = in.cols / 750;
+	ys = in.rows / 750;
+	if(xs % 2 == 0) xs++;
+	if(ys % 2 == 0) ys++;
+	GaussianBlur(in, in, blurSize,
+				0, 0, 1);
+	Scharr(in, x, 0, 1, 0);
+	Scharr(in, y, 0, 0, 1);
+	addWeighted(x, 0.75, y, 0.75, 0, in, -1);
+	threshold(in, out, 245, 255, THRESH_TOZERO);
 }
 
 
-void TemplateMatcher::run() {
-	matchTemplate(m_target, m_templ, m_out, CV_TM_SQDIFF);
+//Run matching; assign useful things to output
+void TemplateMatcher::run(Mat target) {
+	matchTemplate(target, m_templ, m_out, CV_TM_SQDIFF);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
 }
-
+//point of minimum value of output
 Point TemplateMatcher::getMin() {
 	return *m_min;
 }
-
+//point of maximum value of output
 Point TemplateMatcher::getMax() {
 	return *m_max;
 }
