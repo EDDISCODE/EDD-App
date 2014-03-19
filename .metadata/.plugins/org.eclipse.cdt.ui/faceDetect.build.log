@@ -1,0 +1,6 @@
+13:08:42 **** Incremental Build of configuration Debug for project faceDetect ****
+make all 
+make: Nothing to be done for 'all'.
+
+13:08:42 Build Finished (took 60ms)
+
