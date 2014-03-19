@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.eddisapp"
+    package="app.imagesearcher"
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-sdk
-        android:minSdkVersion="16"
+        android:maxSdkVersion="19"
+        android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <application
@@ -14,7 +23,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.eddisapp.MainActivity"
+            android:name="app.imagesearcher.HomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +32,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.eddisapp.DisplaySettingsActivity"
-            android:label="@string/title_activity_display_settings" >
+            android:name="app.imagesearcher.SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.example.eddisapp.UploadPhotoActivity"
-            android:label="@string/title_activity_upload_photo" >
+            android:name="app.imagesearcher.Use"
+            android:label="@string/title_activity_use" >
         </activity>
         <activity
-            android:name="com.example.eddisapp.TakeActivity"
+            android:name="app.imagesearcher.Take"
             android:label="@string/title_activity_take" >
+        </activity>
+        <activity
+            android:name="app.imagesearcher.AlertActivity"
+            android:label="@string/title_activity_alert" >
         </activity>
     </application>
 
