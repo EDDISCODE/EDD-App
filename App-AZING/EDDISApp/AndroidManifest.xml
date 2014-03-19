@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +21,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.eddisapp.DisplaySettingsActivity"
+            android:label="@string/title_activity_display_settings" >
+        </activity>
+        <activity
+            android:name="com.example.eddisapp.UploadPhotoActivity"
+            android:label="@string/title_activity_upload_photo" >
+        </activity>
+        <activity
+            android:name="com.example.eddisapp.TakeActivity"
+            android:label="@string/title_activity_take" >
         </activity>
     </application>
 
