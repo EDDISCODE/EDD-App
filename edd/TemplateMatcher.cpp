@@ -17,46 +17,54 @@ TemplateMatcher::TemplateMatcher() {
 TemplateMatcher::TemplateMatcher(Mat templ) {
 	TemplateMatcher();
 	setTempl(templ);
+	showImg(m_templ); //FOR TESTING
 }
 
 TemplateMatcher::TemplateMatcher(string templPath) {
 	TemplateMatcher();
 	setTempl(templPath);
-	showImg(m_templ);
+	showImg(m_templ); //FOR TESTING
 }
-
 
 //sets template
 void TemplateMatcher::setTempl(string path) {
-	m_templ = imread(path, 1);
+	m_templ = imread(path, 0);
+	float sclfacy = 256.0 / m_templ.rows;
+	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 //sets template
 void TemplateMatcher::setTempl(Mat templ) {
+	cvCvtColor(&templ, &m_templ, CV_RGB2GRAY);
 	m_templ = templ;
+	float sclfacy = 256.0 / m_templ.rows;
+	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 //pull edges out of template or target before matching
-void TemplateMatcher::process(Mat& in, Mat out) {
+void TemplateMatcher::process(Mat in, Mat out) {
 	Mat x, y;
 	Size blurSize;
 	int xs, ys;
-	xs = in.cols / 750;
-	ys = in.rows / 750;
+	xs = 1 + in.cols / 750;
+	ys = 1 + in.rows / 750;
 	if(xs % 2 == 0) xs++;
 	if(ys % 2 == 0) ys++;
-	GaussianBlur(in, in, blurSize,
-				0, 0, 1);
+	blurSize = Size(xs, ys);
+	GaussianBlur(in, in, blurSize,0, 0, 1);
 	Scharr(in, x, 0, 1, 0);
 	Scharr(in, y, 0, 0, 1);
 	addWeighted(x, 0.75, y, 0.75, 0, in, -1);
 	threshold(in, out, 245, 255, THRESH_TOZERO);
 }
 
-
 //Run matching; assign useful things to output
 void TemplateMatcher::run(Mat target) {
-	matchTemplate(target, m_templ, m_out, CV_TM_SQDIFF);
+	Mat tempTarg;
+	process(target, tempTarg);
+	float sclfacy = 1024.0 / tempTarg.rows;
+	resize(tempTarg, tempTarg, Size(sclfacy * tempTarg.cols, 1024), 0, 0, 1);
+	matchTemplate(m_out, m_templ, m_out, CV_TM_SQDIFF);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
 }
 //point of minimum value of output
