@@ -28,15 +28,14 @@ TemplateMatcher::TemplateMatcher(string templPath) {
 
 //sets template
 void TemplateMatcher::setTempl(string path) {
-	m_templ = imread(path, 0);
+	m_templ = imread(path, 0); //Loads image as black and white
 	float sclfacy = 256.0 / m_templ.rows;
 	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 //sets template
 void TemplateMatcher::setTempl(Mat templ) {
-	cvCvtColor(&templ, &m_templ, CV_RGB2GRAY);
-	m_templ = templ;
+	cvtColor(templ, m_templ, CV_BGR2GRAY);
 	float sclfacy = 256.0 / m_templ.rows;
 	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
@@ -46,8 +45,8 @@ void TemplateMatcher::process(Mat in, Mat out) {
 	Mat x, y;
 	Size blurSize;
 	int xs, ys;
-	xs = 1 + in.cols / 750;
-	ys = 1 + in.rows / 750;
+	xs = 3 + in.cols / 150;
+	ys = 3 + in.rows / 150;
 	if(xs % 2 == 0) xs++;
 	if(ys % 2 == 0) ys++;
 	blurSize = Size(xs, ys);
@@ -55,7 +54,7 @@ void TemplateMatcher::process(Mat in, Mat out) {
 	Scharr(in, x, 0, 1, 0);
 	Scharr(in, y, 0, 0, 1);
 	addWeighted(x, 0.75, y, 0.75, 0, in, -1);
-	threshold(in, out, 245, 255, THRESH_TOZERO);
+	threshold(in, out, 185, 255, THRESH_TOZERO);
 }
 
 //Run matching; assign useful things to output
