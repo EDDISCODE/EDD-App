@@ -12,6 +12,7 @@ TemplateMatcher::TemplateMatcher() {
 	m_templ.data = NULL;
 	m_max = NULL;
 	m_min = NULL;
+	m_scale = 13.0/5.4;
 }
 
 TemplateMatcher::TemplateMatcher(Mat templ) {
@@ -58,12 +59,13 @@ void TemplateMatcher::process(Mat in, Mat out) {
 }
 
 //Run matching; assign useful things to output
-void TemplateMatcher::run(Mat target) {
-	Mat tempTarg;
-	process(target, tempTarg);
-	float sclfacy = 1024.0 / tempTarg.rows;
-	resize(tempTarg, tempTarg, Size(sclfacy * tempTarg.cols, 1024), 0, 0, 1);
-	matchTemplate(m_out, m_templ, m_out, CV_TM_SQDIFF);
+void TemplateMatcher::run(Mat target, Rect faceRect) {
+	Mat processedTarg;
+	process(target, processedTarg);
+	Mat resizedTemp;
+	Size tempSize = Size(faceRect.height * m_scale, faceRect.width * m_scale);
+	resize(m_templ, resizedTemp, tempSize);
+	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_SQDIFF);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
 }
 //point of minimum value of output
