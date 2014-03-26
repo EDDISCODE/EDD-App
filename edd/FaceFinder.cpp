@@ -40,7 +40,7 @@ std::vector<Rect> FaceFinder::getLocs() {
 
 bool FaceFinder::run() {
 	if(m_img.data == NULL) return false;
-	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(80,80), Size(150, 150));
+	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(80,80), Size(300, 300));
 	return true;
 }
 

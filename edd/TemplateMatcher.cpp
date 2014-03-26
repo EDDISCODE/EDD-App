@@ -18,7 +18,7 @@ TemplateMatcher::TemplateMatcher() {
 TemplateMatcher::TemplateMatcher(Mat templ) {
 	TemplateMatcher();
 	setTempl(templ);
-	showImg(m_templ); //FOR TESTING
+	//showImg(m_templ); //FOR TESTING
 }
 
 TemplateMatcher::TemplateMatcher(string templPath) {
@@ -27,7 +27,7 @@ TemplateMatcher::TemplateMatcher(string templPath) {
 	showImg(m_templ); //FOR TESTING
 }
 
-//sets template
+//sets template: processes and resizes for decreased mem use
 void TemplateMatcher::setTempl(string path) {
 	m_templ = imread(path, 0); //Loads image as black and white
 	float sclfacy = 256.0 / m_templ.rows;
@@ -62,6 +62,7 @@ void TemplateMatcher::process(Mat in, Mat out) {
 void TemplateMatcher::run(Mat target, Rect faceRect) {
 	Mat processedTarg;
 	process(target, processedTarg);
+	showImg(processedTarg);  //FOR TESTING
 	Mat resizedTemp;
 	Size tempSize = Size(faceRect.height * m_scale, faceRect.width * m_scale);
 	resize(m_templ, resizedTemp, tempSize);

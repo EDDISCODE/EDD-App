@@ -3,11 +3,12 @@
 #include "TemplateMatcher.h"
 
 int main() {
-//	FaceFinder f = FaceFinder("/home/cgs/school/edd/card6.jpg");
-//	f.run();
-//	f.displayLocs();
-	Mat tp = imread("/home/cgs/school/edd/card6.jpg");
+	Mat target = imread("/home/cgs/school/edd/test6.jpg");
+	FaceFinder f = FaceFinder("/home/cgs/school/edd/test6.jpg");
+	f.run();
+	//f.displayLocs();
+	Mat tp = imread("/home/cgs/school/edd/testTemplate1.jpg");
 	TemplateMatcher t = TemplateMatcher(tp);
-	TemplateMatcher t2 = TemplateMatcher("/home/cgs/school/edd/card6.jpg");
+	t.run(target, f.getLocs()[0]);
 	return 0;
 }
