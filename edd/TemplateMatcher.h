@@ -22,12 +22,14 @@ class TemplateMatcher {
 private:
 	Mat m_templ;
 	Mat m_out;
-	double m_scale;
+	double m_scaleX;
+	double m_scaleY;
 	Point* m_max;
 	Point* m_min;
 	const int m_METHOD = 0;
-	void process(Mat in, Mat out);
+	void process(Mat in, Mat& out);
 	void computeScale(string type);
+	void init();
 
 public:
 	TemplateMatcher();
@@ -38,6 +40,7 @@ public:
 	Point getMin();
 	Point getMax();
 	void run(Mat target, Rect faceRect);
+	void dispLoc(int flags, Mat target);
 };
 
 #endif /* TEMPLATEMATCHER_H_ */

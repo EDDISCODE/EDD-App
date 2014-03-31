@@ -16,6 +16,7 @@ FaceFinder::FaceFinder() {
 FaceFinder::FaceFinder(Mat& img) {
 	m_cc = CascadeClassifier(m_PATH);
 	m_img = img;
+	cvtColor(m_img, m_img, CV_BGR2GRAY);
 }
 
 FaceFinder::FaceFinder(std::string imgpath) {

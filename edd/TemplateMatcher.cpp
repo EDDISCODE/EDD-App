@@ -8,21 +8,17 @@
 #include "TemplateMatcher.h"
 
 TemplateMatcher::TemplateMatcher() {
-	m_out.data = NULL;
-	m_templ.data = NULL;
-	m_max = NULL;
-	m_min = NULL;
-	m_scale = 13.0/5.4;
+	init();
 }
 
 TemplateMatcher::TemplateMatcher(Mat templ) {
-	TemplateMatcher();
+	init();
 	setTempl(templ);
-	//showImg(m_templ); //FOR TESTING
+	showImg(m_templ); //FOR TESTING
 }
 
 TemplateMatcher::TemplateMatcher(string templPath) {
-	TemplateMatcher();
+	init();
 	setTempl(templPath);
 	showImg(m_templ); //FOR TESTING
 }
@@ -41,9 +37,18 @@ void TemplateMatcher::setTempl(Mat templ) {
 	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
+void TemplateMatcher::init() {
+	m_out.data = NULL;
+	m_templ.data = NULL;
+	m_max = NULL;
+	m_min = NULL;
+	m_scaleX = 8.6/13.0;
+	m_scaleY = 5.8 / 18.0;
+}
 //pull edges out of template or target before matching
-void TemplateMatcher::process(Mat in, Mat out) {
-	Mat x, y;
+void TemplateMatcher::process(Mat in, Mat& out) {
+	if(in.channels() > 1)
+		cvtColor(in, in, CV_BGR2GRAY);
 	Size blurSize;
 	int xs, ys;
 	xs = 3 + in.cols / 150;
@@ -51,11 +56,12 @@ void TemplateMatcher::process(Mat in, Mat out) {
 	if(xs % 2 == 0) xs++;
 	if(ys % 2 == 0) ys++;
 	blurSize = Size(xs, ys);
-	GaussianBlur(in, in, blurSize,0, 0, 1);
-	Scharr(in, x, 0, 1, 0);
-	Scharr(in, y, 0, 0, 1);
-	addWeighted(x, 0.75, y, 0.75, 0, in, -1);
-	threshold(in, out, 185, 255, THRESH_TOZERO);
+	GaussianBlur(in, out, blurSize,0, 0, 1);
+	Mat x, y;
+	Scharr(out, x, 0, 1, 0);
+	Scharr(out, y, 0, 0, 1);
+	addWeighted(x, 0.75, y, 0.75, 0, out, -1);
+	threshold(out, out, 185, 255, THRESH_TOZERO);
 }
 
 //Run matching; assign useful things to output
@@ -64,10 +70,13 @@ void TemplateMatcher::run(Mat target, Rect faceRect) {
 	process(target, processedTarg);
 	showImg(processedTarg);  //FOR TESTING
 	Mat resizedTemp;
-	Size tempSize = Size(faceRect.height * m_scale, faceRect.width * m_scale);
-	resize(m_templ, resizedTemp, tempSize);
+	Size tempSize = Size(faceRect.width * m_scaleX, faceRect.height * m_scaleY);
+	resize(m_templ, resizedTemp, tempSize, 0, 0);
 	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_SQDIFF);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
+	std::cout << m_min << std::endl;
+	std::cout << "test" << std::endl;
+	dispLoc(1, target);
 }
 //point of minimum value of output
 Point TemplateMatcher::getMin() {
@@ -76,4 +85,12 @@ Point TemplateMatcher::getMin() {
 //point of maximum value of output
 Point TemplateMatcher::getMax() {
 	return *m_max;
+}
+//show where min or max is. 0 = min, 1 = max
+void TemplateMatcher::dispLoc(int flags, Mat target) {
+	if(flags == 0)
+		circle(target, *m_min, 25, Scalar(0,0,255));
+	else if(flags == 1)
+		circle(target, *m_max, 25, Scalar(0,0,255));
+	showImg(target, "test", true);
 }
