@@ -14,7 +14,6 @@ TemplateMatcher::TemplateMatcher() {
 TemplateMatcher::TemplateMatcher(Mat templ) {
 	init();
 	setTempl(templ);
-	showImg(m_templ); //FOR TESTING
 }
 
 TemplateMatcher::TemplateMatcher(string templPath) {
@@ -40,8 +39,8 @@ void TemplateMatcher::setTempl(Mat templ) {
 void TemplateMatcher::init() {
 	m_out.data = NULL;
 	m_templ.data = NULL;
-	m_max = NULL;
-	m_min = NULL;
+	m_max = new Point();
+	m_min = new Point();
 	m_scaleX = 8.6/13.0;
 	m_scaleY = 5.8 / 18.0;
 }
@@ -51,8 +50,8 @@ void TemplateMatcher::process(Mat in, Mat& out) {
 		cvtColor(in, in, CV_BGR2GRAY);
 	Size blurSize;
 	int xs, ys;
-	xs = 3 + in.cols / 150;
-	ys = 3 + in.rows / 150;
+	xs = 1 + in.cols / 150;
+	ys = 1 + in.rows / 150;
 	if(xs % 2 == 0) xs++;
 	if(ys % 2 == 0) ys++;
 	blurSize = Size(xs, ys);
@@ -68,15 +67,14 @@ void TemplateMatcher::process(Mat in, Mat& out) {
 void TemplateMatcher::run(Mat target, Rect faceRect) {
 	Mat processedTarg;
 	process(target, processedTarg);
-	showImg(processedTarg);  //FOR TESTING
+	showImg(processedTarg);
 	Mat resizedTemp;
 	Size tempSize = Size(faceRect.width * m_scaleX, faceRect.height * m_scaleY);
 	resize(m_templ, resizedTemp, tempSize, 0, 0);
 	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_SQDIFF);
+	//Want find min with CV_TM_SQDIFF
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
-	std::cout << m_min << std::endl;
-	std::cout << "test" << std::endl;
-	dispLoc(1, target);
+	dispLoc(0, target);
 }
 //point of minimum value of output
 Point TemplateMatcher::getMin() {
