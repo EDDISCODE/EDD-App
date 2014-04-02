@@ -21,7 +21,7 @@
 class TemplateMatcher {
 private:
 	Mat m_templ;
-	Mat m_out;
+	Mat1f m_out;
 	double m_scaleX;
 	double m_scaleY;
 	Point* m_max;

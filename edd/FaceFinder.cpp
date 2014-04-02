@@ -54,7 +54,7 @@ void FaceFinder::displayLocs() {
 		Point p2 = Point(r.x, r.y);
 		rectangle(dispImg, p1, p2, Scalar(0,0,255), 2);
 	}
-	showImg(dispImg, "window", true); //FOR TESTING
+	//showImg(dispImg, "window", true); //FOR TESTING
 }
 
 Size FaceFinder::getAvgSize() {

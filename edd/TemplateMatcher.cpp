@@ -26,14 +26,14 @@ TemplateMatcher::TemplateMatcher(string templPath) {
 void TemplateMatcher::setTempl(string path) {
 	m_templ = imread(path, 0); //Loads image as black and white
 	float sclfacy = 256.0 / m_templ.rows;
-	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
+//	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 //sets template
 void TemplateMatcher::setTempl(Mat templ) {
 	cvtColor(templ, m_templ, CV_BGR2GRAY);
 	float sclfacy = 256.0 / m_templ.rows;
-	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
+	//resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 void TemplateMatcher::init() {
@@ -56,24 +56,33 @@ void TemplateMatcher::process(Mat in, Mat& out) {
 	if(ys % 2 == 0) ys++;
 	blurSize = Size(xs, ys);
 	GaussianBlur(in, out, blurSize,0, 0, 1);
-	Mat x, y;
-	Scharr(out, x, 0, 1, 0);
-	Scharr(out, y, 0, 0, 1);
-	addWeighted(x, 0.75, y, 0.75, 0, out, -1);
-	threshold(out, out, 185, 255, THRESH_TOZERO);
+	Mat x, y, x1, y1;
+	Scharr(out, x, 0, 1, 0, 1);
+	Scharr(out, y, 0, 0, 1, 1);
+	Scharr(out, x1, 0, 1, 0, -1);
+	Scharr(out, y1, 0, 0, 1, -1);
+	double addWeight = 1;
+	addWeighted(x, addWeight, y, addWeight, 0, x, -1);
+	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
+	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
+	threshold(out, out, 235, 255, THRESH_TOZERO);
+	showImg(out);
 }
 
 //Run matching; assign useful things to output
 void TemplateMatcher::run(Mat target, Rect faceRect) {
 	Mat processedTarg;
 	process(target, processedTarg);
-	showImg(processedTarg);
+	//showImg(processedTarg);
 	Mat resizedTemp;
 	Size tempSize = Size(faceRect.width * m_scaleX, faceRect.height * m_scaleY);
-	resize(m_templ, resizedTemp, tempSize, 0, 0);
-	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_SQDIFF);
+	//resize(m_templ, resizedTemp, tempSize, 0, 0);
+	resize(m_templ, resizedTemp, Size(0,0), 1, 1); //FOR TESTING
+	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_CCORR);
 	//Want find min with CV_TM_SQDIFF
+	normalize(m_out, m_out, 1, 0, NORM_MINMAX, -1);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
+	showImg(m_out);
 	dispLoc(0, target);
 }
 //point of minimum value of output
@@ -90,5 +99,5 @@ void TemplateMatcher::dispLoc(int flags, Mat target) {
 		circle(target, *m_min, 25, Scalar(0,0,255));
 	else if(flags == 1)
 		circle(target, *m_max, 25, Scalar(0,0,255));
-	showImg(target, "test", true);
+	showImg(target);
 }
