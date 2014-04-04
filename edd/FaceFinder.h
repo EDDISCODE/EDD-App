@@ -26,7 +26,7 @@ public:
 	std::vector<Rect> getLocs();
 	bool run();
 	void displayLocs();
-	Size getAvgSize();
+	Rect getAvgRect();
 };
 
 #endif /* FACEFINDER_H_ */

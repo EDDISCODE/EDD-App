@@ -57,7 +57,7 @@ void FaceFinder::displayLocs() {
 	//showImg(dispImg, "window", true); //FOR TESTING
 }
 
-Size FaceFinder::getAvgSize() {
+Rect FaceFinder::getAvgRect() {
 	int width = 0;
 	int height = 0;
 	for(int i = m_locs.size() - 1; i >= 0; i--) {
@@ -66,5 +66,8 @@ Size FaceFinder::getAvgSize() {
 	}
 	width /= m_locs.size();
 	height /= m_locs.size();
-	return Size(width, height);
+	Rect r = Rect();
+	r.height = height;
+	r.width = width;
+	return r;
 }

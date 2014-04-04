@@ -76,14 +76,19 @@ void TemplateMatcher::run(Mat target, Rect faceRect) {
 	//showImg(processedTarg);
 	Mat resizedTemp;
 	Size tempSize = Size(faceRect.width * m_scaleX, faceRect.height * m_scaleY);
-	//resize(m_templ, resizedTemp, tempSize, 0, 0);
+	resize(m_templ, resizedTemp, tempSize, 0, 0);
 	resize(m_templ, resizedTemp, Size(0,0), 1, 1); //FOR TESTING
 	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_CCORR);
-	//Want find min with CV_TM_SQDIFF
 	normalize(m_out, m_out, 1, 0, NORM_MINMAX, -1);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
+	//NEXT TWO LINES NOT NEEDED BECAUSE WE'RE ONLY LOOKING FOR MAX
+	//m_min->x += (resizedTemp.cols+1)/2;
+	//m_min->y += (resizedTemp.rows + 1) / 2;
+	m_max->x += (resizedTemp.cols+1)/2;
+	m_max->y += (resizedTemp.rows+1)/2;
 	showImg(m_out);
-	dispLoc(0, target);
+	dispLoc(1, target);
+	showImg(target);
 }
 //point of minimum value of output
 Point TemplateMatcher::getMin() {
@@ -96,8 +101,8 @@ Point TemplateMatcher::getMax() {
 //show where min or max is. 0 = min, 1 = max
 void TemplateMatcher::dispLoc(int flags, Mat target) {
 	if(flags == 0)
-		circle(target, *m_min, 25, Scalar(0,0,255));
+		circle(target, *m_min, 25, Scalar(0, 0, 255));
 	else if(flags == 1)
-		circle(target, *m_max, 25, Scalar(0,0,255));
+		circle(target, *m_max, 25, Scalar(0, 0, 255));
 	showImg(target);
 }

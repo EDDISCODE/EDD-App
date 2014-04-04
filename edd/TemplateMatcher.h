@@ -26,7 +26,6 @@ private:
 	double m_scaleY;
 	Point* m_max;
 	Point* m_min;
-	const int m_METHOD = 0;
 	void process(Mat in, Mat& out);
 	void computeScale(string type);
 	void init();
