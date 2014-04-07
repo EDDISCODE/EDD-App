@@ -19,21 +19,16 @@ TemplateMatcher::TemplateMatcher(Mat templ) {
 TemplateMatcher::TemplateMatcher(string templPath) {
 	init();
 	setTempl(templPath);
-	showImg(m_templ); //FOR TESTING
 }
 
 //sets template: processes and resizes for decreased mem use
 void TemplateMatcher::setTempl(string path) {
 	m_templ = imread(path, 0); //Loads image as black and white
-	float sclfacy = 256.0 / m_templ.rows;
-//	resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 //sets template
 void TemplateMatcher::setTempl(Mat templ) {
 	cvtColor(templ, m_templ, CV_BGR2GRAY);
-	float sclfacy = 256.0 / m_templ.rows;
-	//resize(m_templ, m_templ, Size(sclfacy * m_templ.cols, 256));
 	process(m_templ, m_templ);
 }
 void TemplateMatcher::init() {
@@ -67,13 +62,13 @@ void TemplateMatcher::process(Mat in, Mat& out) {
 	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
 	threshold(out, out, 235, 255, THRESH_TOZERO);
 	showImg(out);
+	std::cout << "processing" << std::endl;
 }
 
 //Run matching; assign useful things to output
 void TemplateMatcher::run(Mat target, Rect faceRect) {
 	Mat processedTarg;
 	process(target, processedTarg);
-	//showImg(processedTarg);
 	Mat resizedTemp;
 	Size tempSize = Size(faceRect.width * m_scaleX, faceRect.height * m_scaleY);
 	resize(m_templ, resizedTemp, tempSize, 0, 0);
@@ -81,9 +76,6 @@ void TemplateMatcher::run(Mat target, Rect faceRect) {
 	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_CCORR);
 	normalize(m_out, m_out, 1, 0, NORM_MINMAX, -1);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);
-	//NEXT TWO LINES NOT NEEDED BECAUSE WE'RE ONLY LOOKING FOR MAX
-	//m_min->x += (resizedTemp.cols+1)/2;
-	//m_min->y += (resizedTemp.rows + 1) / 2;
 	m_max->x += (resizedTemp.cols+1)/2;
 	m_max->y += (resizedTemp.rows+1)/2;
 	showImg(m_out);

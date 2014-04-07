@@ -15,8 +15,7 @@ FaceFinder::FaceFinder() {
 
 FaceFinder::FaceFinder(Mat& img) {
 	m_cc = CascadeClassifier(m_PATH);
-	m_img = img;
-	cvtColor(m_img, m_img, CV_BGR2GRAY);
+	setTarget(img);
 }
 
 FaceFinder::FaceFinder(std::string imgpath) {
@@ -26,10 +25,33 @@ FaceFinder::FaceFinder(std::string imgpath) {
 
 bool FaceFinder::setTarget(std::string imgpath) {
 	m_img = imread(imgpath, 0);	//0 = return grayscale, >0 = 3 channel
-	if(m_img.rows > 1000 || m_img.cols > 1500) {
-		double scaleFac = std::min(1000.0/m_img.rows, 1500.0/m_img.cols);
+	cvtColor(m_img, m_img, CV_BGR2GRAY);
+	if(m_img.cols > 1024) {
+		double scaleFac = 1024.0/m_img.cols;
 		resize(m_img, m_img, Size(0,0), scaleFac, scaleFac);
 	}
+	else if(m_img.rows > 1024){
+		double scaleFac = 1024.0/m_img.rows;
+		resize(m_img, m_img, Size(0,0), scaleFac, scaleFac);
+	}
+	equalizeHist(m_img, m_img);
+	if(m_img.data != NULL)
+		return true;
+	return false;
+}
+
+bool FaceFinder::setTarget(Mat img) {
+	m_img = img;
+	cvtColor(m_img, m_img, CV_BGR2GRAY);
+	if(m_img.cols > 1024) {
+			double scaleFac = 1024.0/m_img.cols;
+			resize(m_img, m_img, Size(0,0), scaleFac, scaleFac);
+		}
+		else if(m_img.rows > 1024){
+			double scaleFac = 1024.0/m_img.rows;
+			resize(m_img, m_img, Size(0,0), scaleFac, scaleFac);
+		}
+	equalizeHist(m_img, m_img);
 	if(m_img.data != NULL)
 		return true;
 	return false;
@@ -41,7 +63,9 @@ std::vector<Rect> FaceFinder::getLocs() {
 
 bool FaceFinder::run() {
 	if(m_img.data == NULL) return false;
-	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(80,80), Size(300, 300));
+	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(100,100), Size(400,400));
+	for(int i = 0; i < m_locs.size(); i++)
+		std::cout << m_locs[i].x <<std::endl;
 	return true;
 }
 
@@ -54,7 +78,7 @@ void FaceFinder::displayLocs() {
 		Point p2 = Point(r.x, r.y);
 		rectangle(dispImg, p1, p2, Scalar(0,0,255), 2);
 	}
-	//showImg(dispImg, "window", true); //FOR TESTING
+	showImg(dispImg);
 }
 
 Rect FaceFinder::getAvgRect() {

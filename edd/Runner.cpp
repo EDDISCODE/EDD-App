@@ -3,7 +3,7 @@
 #include "TemplateMatcher.h"
 
 int main() {
-	Mat target = imread("/home/cgs/school/edd/test1.jpg");
+	Mat target = imread("/home/cgs/school/edd/test3.jpg");
 	FaceFinder f = FaceFinder(target);
 	f.run();
 	f.displayLocs();

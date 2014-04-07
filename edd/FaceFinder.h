@@ -15,7 +15,6 @@ private:
 	Mat m_img;
 	CascadeClassifier m_cc;
 	const std::string m_PATH = "/home/cgs/code/edd/haarcascade_frontalface_alt2.xml";
-	// "../haarcascade_frontalface_alt2.xml";
 	std::vector<Rect> m_locs;
 
 public:
@@ -23,6 +22,7 @@ public:
 	FaceFinder(Mat& img);
 	FaceFinder(std::string imgpath);
 	bool setTarget(std::string imgpath);
+	bool setTarget(Mat img);
 	std::vector<Rect> getLocs();
 	bool run();
 	void displayLocs();
