@@ -21,7 +21,7 @@ TemplateMatcher::TemplateMatcher(string templPath) {
 	setTempl(templPath);
 }
 
-//sets template: processes and resizes for decreased mem use
+//sets template: processes
 void TemplateMatcher::setTempl(string path) {
 	m_templ = imread(path, 0); //Loads image as black and white
 	process(m_templ, m_templ);
@@ -39,14 +39,14 @@ void TemplateMatcher::init() {
 	m_scaleX = 8.6/13.0;
 	m_scaleY = 5.8 / 18.0;
 }
-//pull edges out of template or target before matching
+//pull edges out of image
 void TemplateMatcher::process(Mat in, Mat& out) {
 	if(in.channels() > 1)
 		cvtColor(in, in, CV_BGR2GRAY);
 	Size blurSize;
 	int xs, ys;
-	xs = 1 + in.cols / 150;
-	ys = 1 + in.rows / 150;
+	xs = in.cols / 200;
+	ys = in.rows / 200;
 	if(xs % 2 == 0) xs++;
 	if(ys % 2 == 0) ys++;
 	blurSize = Size(xs, ys);
@@ -62,7 +62,6 @@ void TemplateMatcher::process(Mat in, Mat& out) {
 	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
 	threshold(out, out, 235, 255, THRESH_TOZERO);
 	showImg(out);
-	std::cout << "processing" << std::endl;
 }
 
 //Run matching; assign useful things to output
@@ -72,7 +71,6 @@ void TemplateMatcher::run(Mat target, Rect faceRect) {
 	Mat resizedTemp;
 	Size tempSize = Size(faceRect.width * m_scaleX, faceRect.height * m_scaleY);
 	resize(m_templ, resizedTemp, tempSize, 0, 0);
-	resize(m_templ, resizedTemp, Size(0,0), 1, 1); //FOR TESTING
 	matchTemplate(processedTarg, resizedTemp, m_out, CV_TM_CCORR);
 	normalize(m_out, m_out, 1, 0, NORM_MINMAX, -1);
 	minMaxLoc(m_out, NULL, NULL, m_min, m_max);

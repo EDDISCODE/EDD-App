@@ -63,9 +63,11 @@ std::vector<Rect> FaceFinder::getLocs() {
 
 bool FaceFinder::run() {
 	if(m_img.data == NULL) return false;
-	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(100,100), Size(400,400));
-	for(int i = 0; i < m_locs.size(); i++)
-		std::cout << m_locs[i].x <<std::endl;
+	m_cc.detectMultiScale(m_img, m_locs, 1.1, 3, 0, Size(128,128), Size(512,512));
+	if(m_locs.size() < 1){
+		std::cout << "NO FACES DETECTED" << std::endl;
+		return false;
+	}
 	return true;
 }
 
