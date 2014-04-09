@@ -45,8 +45,8 @@ void TemplateMatcher::process(Mat in, Mat& out) {
 		cvtColor(in, in, CV_BGR2GRAY);
 	Size blurSize;
 	int xs, ys;
-	xs = in.cols / 200;
-	ys = in.rows / 200;
+	xs = in.cols / 100;
+	ys = in.rows / 100;
 	if(xs % 2 == 0) xs++;
 	if(ys % 2 == 0) ys++;
 	blurSize = Size(xs, ys);
@@ -78,6 +78,7 @@ void TemplateMatcher::run(Mat target, Rect faceRect) {
 	m_max->y += (resizedTemp.rows+1)/2;
 	showImg(m_out);
 	dispLoc(1, target);
+	printpt(*m_max);
 	showImg(target);
 }
 //point of minimum value of output
@@ -89,10 +90,10 @@ Point TemplateMatcher::getMax() {
 	return *m_max;
 }
 //show where min or max is. 0 = min, 1 = max
-void TemplateMatcher::dispLoc(int flags, Mat target) {
+void TemplateMatcher::dispLoc(int flags, Mat& target) {
 	if(flags == 0)
-		circle(target, *m_min, 25, Scalar(0, 0, 255));
+		circle(target, *m_min, 25, Scalar(0, 0, 255), 5);
 	else if(flags == 1)
-		circle(target, *m_max, 25, Scalar(0, 0, 255));
-	showImg(target);
+		circle(target, *m_max, 25, Scalar(0, 0, 255), 5);
+	//showImg(target);
 }

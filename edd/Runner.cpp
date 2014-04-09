@@ -3,8 +3,9 @@
 #include "TemplateMatcher.h"
 
 int main() {
-	Mat target = imread("/home/cgs/school/edd/test6.jpg");
-	if(target.cols > 1024) {
+	Mat target = imread("/home/cgs/school/edd/test7.jpg");
+
+	if(target.cols > 1024 && target.cols > target.rows) {
 		double scaleFac = 1024.0/target.cols;
 		resize(target, target, Size(0,0), scaleFac, scaleFac);
 	}

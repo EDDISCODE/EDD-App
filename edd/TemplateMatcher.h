@@ -39,7 +39,7 @@ public:
 	Point getMin();
 	Point getMax();
 	void run(Mat target, Rect faceRect);
-	void dispLoc(int flags, Mat target);
+	void dispLoc(int flags, Mat& target);
 };
 
 #endif /* TEMPLATEMATCHER_H_ */
