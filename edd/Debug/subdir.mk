@@ -4,24 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../FaceFinder.cpp \
 ../Runner.cpp \
-../Runner2.cpp \
-../TemplateMatcher.cpp \
 ../TestUtils.cpp 
 
 OBJS += \
-./FaceFinder.o \
 ./Runner.o \
-./Runner2.o \
-./TemplateMatcher.o \
 ./TestUtils.o 
 
 CPP_DEPS += \
-./FaceFinder.d \
 ./Runner.d \
-./Runner2.d \
-./TemplateMatcher.d \
 ./TestUtils.d 
 
 
