@@ -18,9 +18,11 @@ int main() {
 	else avgRect = locs[0];
 
 	process(target, target);
+	testutils::showImg(target);
 	Mat templ = imread(templPath);
 	resizeTemplate(templ, avgRect);
 	process(templ, templ, genBlurSize(target));
+	testutils::showImg(templ);
 
 	Mat1f matcherOutput;
 	Point* max = new Point();
@@ -36,16 +38,37 @@ int main() {
 	dispLoc(target, vector<Point>(1, *max));
 }
 
-//Scales image so that largest dimension is 1024 px
+//Scales image so that largest dimension is MAXDIM px
 void resizeTarget(Mat& img) {
-	if(img.cols > 1024 && img.cols > img.rows) {
-		double scaleFac = 1024.0/img.cols;
+	if(img.cols > MAXDIM && img.cols > img.rows) {
+		double scaleFac = MAXDIM/img.cols;
 		resize(img, img, Size(0,0), scaleFac, scaleFac);
 	}
-	else if(img.rows > 1024){
-		double scaleFac = 1024.0/img.rows;
+	else if(img.rows > MAXDIM){
+		double scaleFac = MAXDIM/img.rows;
 		resize(img, img, Size(0,0), scaleFac, scaleFac);
 	}
+}
+//Rotates the img to the orientation in whic the most faces are detected
+Mat targetRotAndComparator(Mat& img, vector<Rect>& locs) {
+	unsigned int bestNumFaces = 0;
+	Mat bestTransform = Mat();
+	for(int i = 0; i <360; i += 90) {
+		Mat rot;
+		Mat transform = getRotationMatrix2D(Point(img.cols/2, img.rows/2), i, 1);
+		Size sz;
+		if(i % 180 != 0)
+			sz = Size(img.rows, img.cols);
+		else
+			sz = img.size();
+		warpAffine(img, rot, transform, sz);
+		findComparator(rot, locs);
+		if(locs.size() > bestNumFaces) {
+			bestTransform = transform;
+			bestNumFaces = locs.size();
+		}
+	}
+	return bestTransform;
 }
 //Locates instances of comparator item
 bool findComparator(Mat img, vector<Rect>& locs, string classifierPath) {
@@ -55,14 +78,14 @@ bool findComparator(Mat img, vector<Rect>& locs, string classifierPath) {
 	}
 	CascadeClassifier cc = CascadeClassifier(classifierPath);
 	equalizeHist(img, img);
-	cc.detectMultiScale(img, locs, 1.1, 3, 0, Size(128,128), Size(512,512));
-	if(locs.size() < 1){
+	cc.detectMultiScale(img, locs, 1.1, 3, 0, Size(img.cols/16, img.rows/16), Size(img.cols/2, img.rows/2));
+	if(locs.size() <= 0){
 		std::cout << "NO FACES DETECTED" << std::endl;
 		return false;
 	}
 	return true;
 }
-//Processing function for template and target
+//Processing function for template and img
 void process(Mat in, Mat& out, Size blurSize) {
 	if(in.channels() > 1)
 		cvtColor(in, in, CV_BGR2GRAY);
@@ -83,6 +106,8 @@ void process(Mat in, Mat& out, Size blurSize) {
 	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
 	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
 	threshold(out, out, 235, 255, THRESH_TOZERO);
+	Mat structure = getStructuringElement(MORPH_CROSS, Size(9, 1));
+	erode(out, out, structure);
 }
 //Outputs a rectangle of average size
 Rect getAvgRect(vector<Rect> rects) {
@@ -113,7 +138,7 @@ Rect getAvgRect(vector<Rect> rects) {
 	return out;
 
 }
-//Resize template according to target size
+//Resize template according to img size
 void resizeTemplate(Mat& templ, Rect comparator, double scaleX, double scaleY) {
 	Size sz = comparator.size();
 	sz.width *= scaleX;
@@ -122,7 +147,7 @@ void resizeTemplate(Mat& templ, Rect comparator, double scaleX, double scaleY) {
 }
 //Generates a blur size
 Size genBlurSize(Mat& img) {
-	Size sz = Size(img.cols / 100, img.rows / 100);
+	Size sz = Size(img.cols / 150, img.rows / 150);
 	if(sz.width % 2 == 0) sz.width++;
 	if(sz.height % 2 == 0) sz.height++;
 	return sz;
@@ -132,7 +157,7 @@ void dispLoc(Mat img, vector<Point> points) {
 	if(img.channels() == 1)
 		cvtColor(img, img, CV_GRAY2BGR);
 	for(int i = 0; i < points.size(); i++)
-		circle(img, points[i], 25, Scalar(0, 0, 255), 5);
+		rectangle(img, points[i], points[i]+Point(20, 20), Scalar(0,0,255), 3);
 	testutils::showImg(img);
 }
 //Displays the rectangles
