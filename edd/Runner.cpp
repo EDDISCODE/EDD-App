@@ -89,7 +89,7 @@ bool findComparator(Mat img, vector<Rect>& locs, string classifierPath) {
 void process(Mat in, Mat& out, Size blurSize) {
 	if(in.channels() > 1)
 		cvtColor(in, in, CV_BGR2GRAY);
-	if(blurSize.width <= 0 && blurSize.height <= 0)
+	if(blurSize.width <= 0 || blurSize.height <= 0)
 		blurSize = genBlurSize(in);
 	else {
 		if(blurSize.width % 2 == 0) blurSize.width++;
@@ -105,9 +105,10 @@ void process(Mat in, Mat& out, Size blurSize) {
 	addWeighted(x, addWeight, y, addWeight, 0, x, -1);
 	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
 	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
-	threshold(out, out, 235, 255, THRESH_TOZERO);
-	Mat structure = getStructuringElement(MORPH_CROSS, Size(9, 1));
-	erode(out, out, structure);
+	threshold(out, out, LOWERTHRESH, UPPERTHRESH, THRESH_TOZERO);
+//	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(3, 5));
+//	erode(out, out, structure);
+
 }
 //Outputs a rectangle of average size
 Rect getAvgRect(vector<Rect> rects) {
@@ -147,7 +148,7 @@ void resizeTemplate(Mat& templ, Rect comparator, double scaleX, double scaleY) {
 }
 //Generates a blur size
 Size genBlurSize(Mat& img) {
-	Size sz = Size(img.cols / 150, img.rows / 150);
+	Size sz = Size(img.cols / BLURDIVISOR, img.rows / BLURDIVISOR);
 	if(sz.width % 2 == 0) sz.width++;
 	if(sz.height % 2 == 0) sz.height++;
 	return sz;
@@ -171,4 +172,10 @@ void dispLoc(Mat img, vector<Rect> rects) {
 		rectangle(img, p1, p2, Scalar(0,0,255), 2);
 	}
 	testutils::showImg(img);
+}
+//Weights things based on distance from the vertical line running through the comparator
+void distanceWeight(Mat& img, Rect comparator){
+	if(img.channels() > 1)
+		std::cout << "TOO MANY CHANNELS" << std::endl;
+	//Iterate over pixels, subtract k*distance from line from each
 }
