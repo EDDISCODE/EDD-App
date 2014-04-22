@@ -5,14 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Runner.cpp \
+../Segmentation.cpp \
 ../TestUtils.cpp 
 
 OBJS += \
 ./Runner.o \
+./Segmentation.o \
 ./TestUtils.o 
 
 CPP_DEPS += \
 ./Runner.d \
+./Segmentation.d \
 ./TestUtils.d 
 
 

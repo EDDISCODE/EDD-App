@@ -18,8 +18,10 @@
 using namespace cv;
 
 
+int main1();
+int main2();
+
 void resizeTarget(Mat& img);
-Mat targetRotAndComparator(Mat& img, vector<Rect>& locs); //DO NOT USE YET
 bool findComparator(Mat img, vector<Rect>& locs,
 					string classifierPath = "/home/cgs/code/edd/haarcascade_frontalface_alt2.xml");
 void process(Mat in, Mat& out, Size blurSize = Size(0,0));

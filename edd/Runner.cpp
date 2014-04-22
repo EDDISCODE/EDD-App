@@ -1,6 +1,12 @@
 #include "Runner.h"
+#include "Segmentation.h"
 
 int main() {
+	main1();
+	return 0;
+}
+//standard main
+int main1() {
 	string targetPath = "/home/cgs/school/edd/test1.jpg";
 	string templPath = "/home/cgs/school/edd/testtmp1.jpg";
 
@@ -36,8 +42,34 @@ int main() {
 	target = imread(targetPath);
 	resizeTarget(target);
 	dispLoc(target, vector<Point>(1, *max));
+	return 0;
 }
+//segmented main
+int main2() {
+	using namespace segmentation;
+	string targetPath = "/home/cgs/school/edd/test1.jpg";
+	string templPath = "/home/cgs/school/edd/testtmp1.jpg";
 
+	Mat target = imread(targetPath);
+	resizeTarget(target);
+	cvtColor(target, target, CV_BGR2GRAY);
+
+	vector<Rect> locs;
+	findComparator(target, locs);
+	dispLoc(target, locs);
+	Rect avgRect;
+	if(locs.size() > 1) {
+		avgRect = getAvgRect(locs);
+	}
+	else avgRect = locs[0];
+
+	process(target, target);
+	testutils::showImg(target);
+	Mat templ = imread(templPath);
+	resizeTemplate(templ, avgRect);
+
+	return 0;
+}
 //Scales image so that largest dimension is MAXDIM px
 void resizeTarget(Mat& img) {
 	if(img.cols > MAXDIM && img.cols > img.rows) {
@@ -48,27 +80,6 @@ void resizeTarget(Mat& img) {
 		double scaleFac = MAXDIM/img.rows;
 		resize(img, img, Size(0,0), scaleFac, scaleFac);
 	}
-}
-//Rotates the img to the orientation in whic the most faces are detected
-Mat targetRotAndComparator(Mat& img, vector<Rect>& locs) {
-	unsigned int bestNumFaces = 0;
-	Mat bestTransform = Mat();
-	for(int i = 0; i <360; i += 90) {
-		Mat rot;
-		Mat transform = getRotationMatrix2D(Point(img.cols/2, img.rows/2), i, 1);
-		Size sz;
-		if(i % 180 != 0)
-			sz = Size(img.rows, img.cols);
-		else
-			sz = img.size();
-		warpAffine(img, rot, transform, sz);
-		findComparator(rot, locs);
-		if(locs.size() > bestNumFaces) {
-			bestTransform = transform;
-			bestNumFaces = locs.size();
-		}
-	}
-	return bestTransform;
 }
 //Locates instances of comparator item
 bool findComparator(Mat img, vector<Rect>& locs, string classifierPath) {
