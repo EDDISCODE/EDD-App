@@ -4,11 +4,10 @@ namespace segmentation {
 void divImg(Mat img, int rows, int cols, matVec& rois) {
 	int dx = img.cols/cols;
 	int dy = img.rows/rows;
-
-	for(int i = 0; i < img.rows; i += dy){
+	for(int i = 0; i < img.rows; i += dy) {
 		rois.push_back(vector<Mat>());
-		for(int j = 0; j < img.cols; j += dx){
-			rois[i].push_back(Mat(img, Rect(Point(j, i), Point(j+dx, i+dy))));
+		for(int j = 0; j < img.cols; j += dx) {
+			rois[i].push_back(Mat(img, Rect(Point(j, i), Size(dx, dy))));
 		}
 	}
 }

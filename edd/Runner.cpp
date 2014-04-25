@@ -2,7 +2,8 @@
 #include "Segmentation.h"
 
 int main() {
-	main1();
+	//main1();
+	main2();
 	return 0;
 }
 //standard main
@@ -67,6 +68,13 @@ int main2() {
 	testutils::showImg(target);
 	Mat templ = imread(templPath);
 	resizeTemplate(templ, avgRect);
+	process(templ, templ);
+	testutils::showImg(templ);
+
+	matVec parts; //= std::vector< std::vector<Mat> >();
+	divImg(templ, 2, 2, parts);
+//	adjacencyMat adj = genAdjacencyMat(parts, parts[0][0].rows/2);
+//	std::vector<int> sortedList = sortByConnections(adj);
 
 	return 0;
 }

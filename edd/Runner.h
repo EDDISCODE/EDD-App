@@ -26,7 +26,7 @@ bool findComparator(Mat img, vector<Rect>& locs,
 					string classifierPath = "/home/cgs/code/edd/haarcascade_frontalface_alt2.xml");
 void process(Mat in, Mat& out, Size blurSize = Size(0,0));
 Rect getAvgRect(vector<Rect> rects);
-void resizeTemplate(Mat& templ, Rect comparator, double scaleX = 8.6/13.0, double scaleY = 6.2 / 18.0);
+void resizeTemplate(Mat& templ, Rect comparator, double scaleX = 8.6/13.0, double scaleY = 6.7 / 18.0);
 Size genBlurSize(Mat& img);
 void dispLoc(Mat img, vector<Point> points);
 void dispLoc(Mat img, vector<Rect> rects);
