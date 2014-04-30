@@ -8,8 +8,8 @@ int main() {
 }
 //standard main
 int main1() {
-	string targetPath = "/home/cgs/school/edd/test1.jpg";
-	string templPath = "/home/cgs/school/edd/testtmp1.jpg";
+	string targetPath = "/home/cgs/school/edd/test7.jpg";
+	string templPath = "/home/cgs/school/edd/testtmp2.jpg";
 
 	Mat target = imread(targetPath);
 	resizeTarget(target);
@@ -72,9 +72,14 @@ int main2() {
 	testutils::showImg(templ);
 
 	matVec parts; //= std::vector< std::vector<Mat> >();
-	divImg(templ, 2, 2, parts);
-//	adjacencyMat adj = genAdjacencyMat(parts, parts[0][0].rows/2);
-//	std::vector<int> sortedList = sortByConnections(adj);
+	divImg(templ, 3, 5, parts);
+	for(int i = 0; i < parts.size(); i++){
+		for(int j = 0; j < parts[0].size(); j++)
+			std::cout << "(" << parts[i][j].rows << ", " << parts[i][j].cols << ")  ";
+		std::cout << std::endl;
+	}
+	adjacencyMat adj = genAdjacencyMat(parts, parts[0][0].rows/2);
+	std::vector<int> sortedList = sortByConnections(adj);
 
 	return 0;
 }
@@ -177,7 +182,7 @@ void dispLoc(Mat img, vector<Point> points) {
 	if(img.channels() == 1)
 		cvtColor(img, img, CV_GRAY2BGR);
 	for(int i = 0; i < points.size(); i++)
-		rectangle(img, points[i], points[i]+Point(20, 20), Scalar(0,0,255), 3);
+		rectangle(img, points[i], points[i]+Point(20, 20), Scalar(0,255,0), 3);
 	testutils::showImg(img);
 }
 //Displays the rectangles

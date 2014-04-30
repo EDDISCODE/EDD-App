@@ -2,13 +2,34 @@
 namespace segmentation {
 //Cuts image into ROIs
 void divImg(Mat img, int rows, int cols, matVec& rois) {
+	assert(rows < img.rows && cols < img.cols && cols > 0 && rows > 0);
 	int dx = img.cols/cols;
 	int dy = img.rows/rows;
-	for(int i = 0; i < img.rows; i += dy) {
+	//DEALS WITH MAIN BODY OF IMAGE
+	for(int i = 0; i < img.rows - img.rows % dy; i += dy) { //might need img.rows-1
 		rois.push_back(vector<Mat>());
-		for(int j = 0; j < img.cols; j += dx) {
-			rois[i].push_back(Mat(img, Rect(Point(j, i), Size(dx, dy))));
+		for(int j = 0; j < img.cols - img.cols % dx; j += dx) {
+			rois[i/dy].push_back(Mat(img, Rect(Point(j, i), Size(dx, dy))));
 		}
+	}
+	//DEALS WITH EXTRA AT THE BOTTOM
+	if(img.rows % dy != 0) {
+		rois.push_back(vector<Mat>());
+		for(int i = 0; i < img.cols - img.cols % dx; i += dx)
+			rois[rois.size() - 1].push_back(Mat(img, Rect(Point(i, img.rows-img.rows % dy),
+											Size(dx, img.rows % dy))));
+	}
+	//DEALS WITH EXTRA AT RIGHT EDGE
+	if(img.cols % dx != 0) {
+		for(int i = 0; i < img.rows - img.rows % dy; i+=dy){
+			rois[i/dy].push_back(Mat(img, Rect(Point(img.cols-img.cols % dx, i),
+									Size(img.cols % dx, dy))));
+		}
+	}
+	//DEALS WITH EXTRA AT BOTTOM RIGHT SQUARE
+	if(img.rows % dy != 0 && img.cols % dx != 0){
+		rois[rois.size()-1].push_back(Mat(img, Rect(Point(img.cols-img.cols % dx, img.rows - img.rows % dy),
+									Size(img.cols % dx, img.rows % dy))));
 	}
 }
 //Computes adjacency matrix for matVec of ROIs
