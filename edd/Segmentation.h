@@ -19,18 +19,23 @@ public:
 	Node(Rect r);
 	vector<Node*> adj;
 	Rect region;
+	int x() { return region.x; }
+	int y() { return region.y; }
 };
 
 class Graph{
 public:
-	Graph(vector<Rect> r);
+	Graph(vector<Node> n, double max, double min=0);
+	Graph(vector<Rect> r, double max, double min = 0);
 	Graph();
 	vector<int> getSortedIndices();
-	vector<Mat> getSorted();
+	vector<Node*> getSorted();
 	void addNode(Node n);
-	void addNode(Mat m);
+	void addNode(Rect m);
 private:
 	vector<Node> nodes;
+	double adjMin;
+	double adjMax;
 	void computeAdj(int index=-1);
 };
 

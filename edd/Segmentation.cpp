@@ -35,21 +35,84 @@ void divImg(Mat img, int rows, int cols, std::vector<Rect>& rois ) {
 double getDist(cv::Point a, cv::Point b) {
 	return std::sqrt(std::pow(a.x-b.x, 2) + std::pow(a.y-b.y, 2));
 }
-//returns a vector of row indices sorted by connectedness
-
+//returns a vector of indices sorted greatest to least by the connectedness of their nodes
+vector<int> Graph::getSortedIndices() {
+	std::vector<int> indices = std::vector<int>();
+	std::vector<Node*> nodesCp = std::vector<Node*>();
+	for(int j = 0; j < nodes.size(); j++)
+		nodesCp.push_back(&(nodes[j]));
+	while(nodesCp.size() > 0) {
+		int max = nodesCp[0]->adj.size();
+		int maxInd = 0;
+		for(int i = 0; i < nodesCp.size() - 1; i++)
+			if(nodesCp[i]->adj.size() > max) {
+				max = nodesCp[i]->adj.size();
+				maxInd = i;
+			}
+		indices.push_back(maxInd);
+	}
+	return indices;
+}
+//returns a vector of Node* sorted from greatest to least by connectedness
+std::vector<Node*> Graph::getSorted() {
+	std::vector<int> ind = getSortedIndices();
+	std::vector<Node*> n = std::vector<Node*>();
+	for(int i = 0; i < ind.size(); i++)
+		n.push_back(&(nodes[ind[i]]));
+	return n;
+}
 Node::Node(Rect r) {
 	region = r;
 }
-
+//some constructors`
 Graph::Graph(){
+	adjMin = 0;
+	adjMax = 1;
 	nodes = std::vector<Node>();
 }
-
-Graph::Graph(std::vector<Rect> r){
+Graph::Graph(std::vector<Node> n, double max, double min){
+	adjMin = min;
+	adjMax = max;
+	nodes = std::vector<Node>();
+	for(int i = 0; i < n.size(); i++)
+		nodes.push_back(n[i]);
+	computeAdj();
+}
+Graph::Graph(std::vector<Rect> r, double max, double min) {
+	adjMin = min;
+	adjMax = max;
 	nodes = std::vector<Node>();
 	for(int i = 0; i < r.size(); i++)
 		nodes.push_back(Node(r[i]));
-	computeAdj();
+}
+//adds a node to the graph
+void Graph::addNode(Node n) {
+	nodes.push_back(n);
+	computeAdj(nodes.size()-1);
+}
+//adds a node to the graph
+void Graph::addNode(Rect r) {
+	this->addNode(Node(r));
+}
+//computes adjacencies
+void Graph::computeAdj(int index) {
+	if(index >= 0) {
+		Point a = Point(nodes[index].x(), nodes[index].y());
+		for(int i = 0; i < nodes.size()-1; i++) {
+			if(i == index) continue;
+			else {
+				Point b = Point(nodes[i].x(), nodes[i].y());
+				if(getDist(a, b) < adjMax && getDist(a,b) > adjMin)
+					nodes[index].adj.push_back(&nodes[i]);
+			}
+		}
+	}
+	else {
+		for(int i = 0; i < nodes.size(); i++) {
+			nodes[i].adj.clear();
+			computeAdj(i);
+		}
+	}
 }
 
 }

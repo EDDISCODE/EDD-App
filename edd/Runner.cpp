@@ -71,12 +71,12 @@ int main2() {
 	process(templ, templ);
 	testutils::showImg(templ);
 
-	vector<Rect> parts; //= std::vector< std::vector<Mat> >();
-	divImg(templ, 3, 5, parts);
-	for(int i = 0; i < parts.size(); i++){
-		std::cout << "(" << parts[i].x<< ", " << parts[i].y<< ")  ";
-		std::cout << std::endl;
-	}
+//	vector<Rect> parts; //= std::vector< std::vector<Mat> >();
+//	divImg(templ, 3, 5, parts);
+//	for(int i = 0; i < parts.size(); i++){
+//		std::cout << "(" << parts[i].x<< ", " << parts[i].y<< ")  ";
+//		std::cout << std::endl;
+//	}
 	//adjacencyMat adj = genAdjacencyMat(parts, parts[0][0].rows/2);
 	//std::vector<int> sortedList = sortByConnections(adj);
 
