@@ -21,22 +21,27 @@ public:
 	Rect region;
 	int x() { return region.x; }
 	int y() { return region.y; }
+	int width() { return region.width; }
+	int height() {return region.height; }
 };
 
 class Graph{
 public:
-	Graph(vector<Node> n, double max, double min=0);
-	Graph(vector<Rect> r, double max, double min = 0);
+	Node& operator[](int i);
+	Graph(vector<Node> n, double max=-1.0, double min=0);
+	Graph(vector<Rect> r, double max=-1.0, double min = 0);
 	Graph();
 	vector<int> getSortedIndices();
 	vector<Node*> getSorted();
 	void addNode(Node n);
 	void addNode(Rect m);
+	int size() { return nodes.size(); }
 private:
 	vector<Node> nodes;
 	double adjMin;
 	double adjMax;
 	void computeAdj(int index=-1);
+	double genMax(double max = -1.0);
 };
 
 

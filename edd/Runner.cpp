@@ -71,14 +71,16 @@ int main2() {
 	process(templ, templ);
 	testutils::showImg(templ);
 
-//	vector<Rect> parts; //= std::vector< std::vector<Mat> >();
-//	divImg(templ, 3, 5, parts);
-//	for(int i = 0; i < parts.size(); i++){
-//		std::cout << "(" << parts[i].x<< ", " << parts[i].y<< ")  ";
-//		std::cout << std::endl;
-//	}
-	//adjacencyMat adj = genAdjacencyMat(parts, parts[0][0].rows/2);
-	//std::vector<int> sortedList = sortByConnections(adj);
+	//generating template graph
+	vector<Rect> parts;
+	divImg(templ, 2, 2, parts);
+	Graph g = Graph(parts);
+	std::vector<int> sortedList = g.getSortedIndices();
+
+	//search for each region
+	//take top 3 matches for each region
+	//take the combination that will create a structure most like the template graph
+	//measure likeness by number of matching connections
 
 	return 0;
 }
