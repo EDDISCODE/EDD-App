@@ -2,7 +2,7 @@
 #include "Segmentation.h"
 
 int main() {
-	//main1();
+//	main1();
 	main2();
 	return 0;
 }
@@ -74,11 +74,31 @@ int main2() {
 	//generating template graph
 	vector<Rect> parts;
 	divImg(templ, 2, 2, parts);
-	Graph g = Graph(parts);
-	std::vector<int> sortedList = g.getSortedIndices();
+	Graph templGraph = Graph(parts);
 
-	//search for each region
-	//take top 3 matches for each region
+	//search for each region, taking top three location matches from each
+	const int TOPN = 3;
+	std::vector<std::vector<Point> > matches = std::vector<std::vector<Point> >(templGraph.size());
+	for(int i = 0; i < matches.size(); i++) {
+		Mat1f matcherOutput;
+		matchTemplate(target, Mat(templ, templGraph[i].region), matcherOutput, CV_TM_CCORR);
+		normalize(matcherOutput, matcherOutput, 1, 0, NORM_MINMAX, -1);
+		for(int j = 0; j < TOPN; j++) {
+			Point* max = new Point();
+			testutils::showImg(matcherOutput);
+			minMaxLoc(matcherOutput, NULL, NULL, NULL, max);
+			max->x += (templ.cols+1)/2;
+			max->y += (templ.rows+1)/2;
+			matches[i].push_back(*max);
+			circle(matcherOutput, *max, templGraph[i].height(), Scalar(0,0,0), -1);
+		}
+	}
+
+	//notes: try not using degenerate edge pieces to avoid wierd matcher output
+	//some circles not showing up because height is too small (degenerates)
+	// ake sure covering right places
+	//use putText() to number images
+
 	//take the combination that will create a structure most like the template graph
 	//measure likeness by number of matching connections
 
