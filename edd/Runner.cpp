@@ -73,31 +73,45 @@ int main2() {
 
 	//generating template graph
 	vector<Rect> parts;
-	divImg(templ, 2, 2, parts);
+	divImg(templ, DIVROWS, DIVCOLS, parts);
 	Graph templGraph = Graph(parts);
 
 	//search for each region, taking top three location matches from each
-	const int TOPN = 3;
-	std::vector<std::vector<Point> > matches = std::vector<std::vector<Point> >(templGraph.size());
+	std::vector<std::vector<Point> > matches = std::vector<std::vector<Point> >(DIVROWS*DIVCOLS);
 	for(int i = 0; i < matches.size(); i++) {
 		Mat1f matcherOutput;
 		matchTemplate(target, Mat(templ, templGraph[i].region), matcherOutput, CV_TM_CCORR);
 		normalize(matcherOutput, matcherOutput, 1, 0, NORM_MINMAX, -1);
 		for(int j = 0; j < TOPN; j++) {
 			Point* max = new Point();
-			testutils::showImg(matcherOutput);
 			minMaxLoc(matcherOutput, NULL, NULL, NULL, max);
 			max->x += (templ.cols+1)/2;
 			max->y += (templ.rows+1)/2;
 			matches[i].push_back(*max);
-			circle(matcherOutput, *max, templGraph[i].height(), Scalar(0,0,0), -1);
+			circle(matcherOutput, *max, COVERFAC*std::max(templGraph[i].height(), templGraph[i].width()),
+					Scalar(0,0,0), -1);
+			//This output messes up searching, do not use
+//			std::stringstream s;
+//			s << i << ", " << j;
+//			rectangle(matcherOutput, Point(50, 50), Point(100, 75),Scalar(0,0,0), -1);
+//			putText(matcherOutput, s.str() ,Point(50,50),0,1,Scalar(1,0,0) );
+
+//			testutils::showImg(matcherOutput);
 		}
+
+
 	}
 
-	//notes: try not using degenerate edge pieces to avoid wierd matcher output
-	//some circles not showing up because height is too small (degenerates)
-	// ake sure covering right places
-	//use putText() to number images
+	//construct graphs and test them
+
+	//NOTES:
+	// *** before indicates done
+
+	//FIND TOP N FOR EACH PIECE
+	//*** try not using degenerate edge pieces to avoid wierd matcher output
+	//*** some circles not showing up because height is too small (degenerates)
+	// ***ake sure covering right places
+	//***use putText() to number images (didn't work well, see note in place)
 
 	//take the combination that will create a structure most like the template graph
 	//measure likeness by number of matching connections

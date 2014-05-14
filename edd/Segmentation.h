@@ -17,6 +17,7 @@ double getDist(cv::Point a, cv::Point b);
 struct Node{
 public:
 	Node(Rect r);
+	Node(Point p);
 	vector<Node*> adj;
 	Rect region;
 	int x() { return region.x; }

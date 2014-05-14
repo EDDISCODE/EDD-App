@@ -11,10 +11,17 @@
 #include "cv.h"
 #include "TestUtils.h"
 
+//Control panel
 #define MAXDIM 1024.0
 #define BLURDIVISOR 200
 #define UPPERTHRESH 255
 #define LOWERTHRESH 240
+//for Segmentation only
+#define TOPN 3
+#define DIVROWS 3
+#define DIVCOLS 3
+#define COVERFAC 1.7
+
 using namespace cv;
 
 

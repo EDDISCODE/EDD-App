@@ -59,6 +59,9 @@ std::vector<Node*> Graph::getSorted() {
 Node::Node(Rect r) {
 	region = r;
 }
+Node::Node(Point p) {
+	region = Rect(p, Size(1,1));
+}
 //some constructors`
 Graph::Graph(){
 	adjMin = 0;
