@@ -99,6 +99,7 @@ int main2() {
 //			testutils::showImg(matcherOutput);
 		}
 
+	//make combinations
 
 	}
 
@@ -107,7 +108,7 @@ int main2() {
 	//NOTES:
 	// *** before indicates done
 
-	//FIND TOP N FOR EACH PIECE
+	//***FIND TOP N FOR EACH PIECE
 	//*** try not using degenerate edge pieces to avoid wierd matcher output
 	//*** some circles not showing up because height is too small (degenerates)
 	// ***ake sure covering right places

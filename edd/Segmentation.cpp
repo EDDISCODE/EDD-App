@@ -129,4 +129,35 @@ Node& Graph::operator[](int i) {
 		return nodes[i];
 }
 
+//BaseNCounter for iterating nicely to make combinations
+BaseNCounter::BaseNCounter(int base, int size, int max) {
+	this->max = max;
+	this->base = base;
+	digits = vector<int>(size);
+}
+
+int BaseNCounter::operator[](int i) {
+	return digits[i];
+}
+
+void BaseNCounter::operator++(){
+	*(digits.end())++;
+	while(check(digits.size() - 1) > 0);
+}
+
+
+int BaseNCounter::check(int index) {
+	if(digits[index] >= base){
+		digits[index] = 0;
+		if(index != 0) {
+			digits[index-1]++;
+			return index - 1;
+		}
+		else return -5;
+	}
+	return -1;
+}
+
+
+
 }

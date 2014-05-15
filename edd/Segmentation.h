@@ -45,7 +45,17 @@ private:
 	double genMax(double max = -1.0);
 };
 
-
+struct BaseNCounter{
+	int max;
+	int base;
+	vector<int> digits;
+public:
+	BaseNCounter(int base, int size, int max);
+	int operator[](int i);
+	void operator++();
+private:
+	int check(int index);
+};
 
 }
 #endif /* SEGMENTATION_H_ */
