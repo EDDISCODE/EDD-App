@@ -1,4 +1,6 @@
 #include "Segmentation.h"
+#include <cmath>
+#include "math.h"
 namespace segmentation {
 //Cuts image into ROIs
 void divImg(Mat img, int rows, int cols, std::vector<Rect>& rois ) {
@@ -131,8 +133,8 @@ Node& Graph::operator[](int i) {
 
 //BaseNCounter for iterating nicely to make combinations
 BaseNCounter::BaseNCounter(int base, int size, int max) {
-	this->max = max;
-	this->base = base;
+	m_max = max;
+	m_base = base;
 	digits = vector<int>(size);
 }
 
@@ -140,24 +142,25 @@ int BaseNCounter::operator[](int i) {
 	return digits[i];
 }
 
-void BaseNCounter::operator++(){
-	*(digits.end())++;
-	while(check(digits.size() - 1) > 0);
+void BaseNCounter::incr(){
+	digits[digits.size() - 1]++;
+	check(digits.size() -1 );
 }
 
 
 int BaseNCounter::check(int index) {
-	if(digits[index] >= base){
+	if(digits[index] >= m_base){
 		digits[index] = 0;
-		if(index != 0) {
+		int sum = 0;
+		for(int i = digits.size() - 1; i >= 0; i--)
+			sum += digits[i]*(pow(m_base, (digits.size() - 1 - i)));
+		if(index != 0 && sum <= m_max) {
 			digits[index-1]++;
-			return index - 1;
+			check(index-1);
 		}
 		else return -5;
 	}
 	return -1;
 }
-
-
 
 }

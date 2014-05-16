@@ -46,16 +46,23 @@ private:
 };
 
 struct BaseNCounter{
-	int max;
-	int base;
+private:
+	int m_max;
+	int m_base;
 	vector<int> digits;
+	int check(int index);
 public:
 	BaseNCounter(int base, int size, int max);
+	int size() { return digits.size(); }
+	int max() { return m_max; }
+	int base() { return m_base; }
 	int operator[](int i);
-	void operator++();
-private:
-	int check(int index);
+	void incr();
 };
+
+int compareGraph(Graph g, Graph h);
+int choose(int n, int k);
+int factorial(int n) { return (n == 1 || n == 0) ? 1 : n*factorial(n-1); }
 
 }
 #endif /* SEGMENTATION_H_ */

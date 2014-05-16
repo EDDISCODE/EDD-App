@@ -3,7 +3,8 @@
 
 int main() {
 //	main1();
-	main2();
+//	main2();
+	std::cout << segmentation::factorial(5);
 	return 0;
 }
 //standard main
@@ -100,6 +101,7 @@ int main2() {
 		}
 
 	//make combinations
+	vector<Graph> graphs;
 
 	}
 
