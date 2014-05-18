@@ -8,8 +8,8 @@
 #ifndef RUNNER2_H_
 #define RUNNER2_H_
 
-#include "cv.h"
 #include "TestUtils.h"
+#include "Segmentation.h"
 
 //Control panel
 #define MAXDIM 1024.0

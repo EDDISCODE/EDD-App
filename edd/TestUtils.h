@@ -9,8 +9,7 @@
 #define TESTUTILS_H_
 
 #include "cv.h"
-#include "highgui.h"
-
+#include "opencv.hpp"
 using namespace cv;
 
 namespace testutils {

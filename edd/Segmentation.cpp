@@ -1,6 +1,5 @@
 #include "Segmentation.h"
-#include <cmath>
-#include "math.h"
+
 namespace segmentation {
 //Cuts image into ROIs
 void divImg(Mat img, int rows, int cols, std::vector<Rect>& rois ) {

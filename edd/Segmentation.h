@@ -8,6 +8,8 @@
 #ifndef SEGMENTATION_H_
 #define SEGMENTATION_H_
 #include "TestUtils.h"
+#include <cmath>
+#include "math.h"
 
 using namespace cv;
 namespace segmentation {
