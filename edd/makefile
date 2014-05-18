@@ -2,7 +2,7 @@ CFLAGS=-Wno-sign-compare -Wno-write-strings -I/usr/include/opencv -I/usr/include
 all: go
 
 go: Segmentation.o TestUtils.o Runner.o
-	g++ Segmentation.o TestUtils.o Runner.o -o go
+	g++ Segmentation.o TestUtils.o Runner.o $(CFLAGS) -o go
 
 Runner.o: Runner.cpp Runner.h Segmentation.cpp Segmentation.h TestUtils.cpp TestUtils.h
 	g++  -c Runner.cpp $(CFLAGS)

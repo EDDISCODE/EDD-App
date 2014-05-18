@@ -3,7 +3,7 @@
 int main() {
 //	main1();
 //	main2();
-	std::cout << segmentation::factorial(5);
+	std::cout << segmentation::factorial(0);
 	return 0;
 }
 //standard main
