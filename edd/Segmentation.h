@@ -18,10 +18,12 @@ std::vector<cv::Point*> getTopN(int n);
 double getDist(cv::Point a, cv::Point b);
 struct Node{
 public:
+	Node();
 	Node(Rect r);
 	Node(Point p);
 	vector<Node*> adj;
 	Rect region;
+	Point location() { return Point(region.x, region.y); }
 	int x() { return region.x; }
 	int y() { return region.y; }
 	int width() { return region.width; }
@@ -39,12 +41,12 @@ public:
 	void addNode(Node n);
 	void addNode(Rect m);
 	int size() { return nodes.size(); }
+	double genMax(double max = -1.0);
 private:
 	vector<Node> nodes;
 	double adjMin;
 	double adjMax;
 	void computeAdj(int index=-1);
-	double genMax(double max = -1.0);
 };
 
 struct BaseNCounter{
@@ -60,11 +62,14 @@ public:
 	int base() { return m_base; }
 	int operator[](int i);
 	void incr();
+	void print() { for(int i = 0; i < digits.size(); i++) std::cout << digits[i] << "\n"; std::cout << "- \n";}
 };
 
 int compareGraph(Graph g, Graph h);
 int choose(int n, int k);
 int factorial(int n);
+int combos(int n, int k);
+bool checkGraph(Graph g, int max=1, int min=0);
 
 }
 #endif /* SEGMENTATION_H_ */

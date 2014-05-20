@@ -63,6 +63,9 @@ Node::Node(Rect r) {
 Node::Node(Point p) {
 	region = Rect(p, Size(1,1));
 }
+Node::Node() {
+	region = Rect(Point(0,0), Size(1,1));
+}
 //some constructors`
 Graph::Graph(){
 	adjMin = 0;
@@ -166,4 +169,29 @@ int factorial(int n) {
 	if(n < 0) return -1;
 	return (n == 1 || n==0) ? 1 : n*factorial(n-1);
 }
+//lower return val => better match
+int compareGraph(Graph g, Graph h) {
+	int * countsg  = new int[g.size()];
+	int * countsh = new int[h.size()];
+	for(int i = 0; i < g.size(); i++)
+		countsg[g[i].adj.size()]++;
+	for(int i = 0; i < h.size(); i++)
+		countsh[h[i].adj.size()]++;
+	int sum = 0;
+	for(int i = 0; i < std::min(g.size(), h.size()); i++)
+		sum += std::abs(countsg[i]-countsh[i]);	
+	return sum;
+}
+
+int combos(int n, int k) {
+	return factorial(n) / (factorial(k) * factorial(n-k));
+}
+
+bool checkGraph(Graph g, int max, int min) {
+	for(int i = 0; i < g.size(); i++)
+		for(int j = i+1; j < g.size(); j++)
+			if(getDist(g[i].location(), g[j].location()) > max || getDist(g[i].location(), g[j].location()) <= min) return false;
+	return true;
+}
+
 }

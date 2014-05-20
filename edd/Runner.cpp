@@ -1,9 +1,8 @@
 #include "Runner.h"
 
 int main() {
-//	main1();
-//	main2();
-	std::cout << segmentation::factorial(0);
+	//main1();
+	main2();
 	return 0;
 }
 //standard main
@@ -25,17 +24,17 @@ int main1() {
 	else avgRect = locs[0];
 
 	process(target, target);
-	testutils::showImg(target);
+	//testutils::showImg(target);
 	Mat templ = imread(templPath);
 	resizeTemplate(templ, avgRect);
 	process(templ, templ, genBlurSize(target));
-	testutils::showImg(templ);
+	//testutils::showImg(templ);
 
 	Mat1f matcherOutput;
 	Point* max = new Point();
 	matchTemplate(target, templ, matcherOutput, CV_TM_CCORR);
 	normalize(matcherOutput, matcherOutput, 1, 0, NORM_MINMAX, -1);
-	testutils::showImg(matcherOutput);
+	//testutils::showImg(matcherOutput);
 	minMaxLoc(matcherOutput, NULL, NULL, NULL, max);
 	max->x += (templ.cols+1)/2;
 	max->y += (templ.rows+1)/2;
@@ -48,14 +47,14 @@ int main1() {
 //segmented main
 int main2() {
 	using namespace segmentation;
-	string targetPath = "/home/cgs/school/edd/test1.jpg";
+	string targetPath = "/home/cgs/school/edd/test7.jpg";
 	string templPath = "/home/cgs/school/edd/testtmp1.jpg";
 
 	Mat target = imread(targetPath);
 	resizeTarget(target);
 	cvtColor(target, target, CV_BGR2GRAY);
 
-	vector<Rect> locs;
+	std::vector<Rect> locs;
 	findComparator(target, locs);
 	dispLoc(target, locs);
 	Rect avgRect;
@@ -65,16 +64,16 @@ int main2() {
 	else avgRect = locs[0];
 
 	process(target, target);
-	testutils::showImg(target);
+	//testutils::showImg(target);
 	Mat templ = imread(templPath);
 	resizeTemplate(templ, avgRect);
 	process(templ, templ);
-	testutils::showImg(templ);
+	//testutils::showImg(templ);
 
 	//generating template graph
 	vector<Rect> parts;
 	divImg(templ, DIVROWS, DIVCOLS, parts);
-	Graph templGraph = Graph(parts);
+	Graph templGraph = Graph(parts, -1);
 
 	//search for each region, taking top three location matches from each
 	std::vector<std::vector<Point> > matches = std::vector<std::vector<Point> >(DIVROWS*DIVCOLS);
@@ -85,26 +84,59 @@ int main2() {
 		for(int j = 0; j < TOPN; j++) {
 			Point* max = new Point();
 			minMaxLoc(matcherOutput, NULL, NULL, NULL, max);
+			circle(matcherOutput, *max, COVERFAC*std::max(templGraph[i].height(), templGraph[i].width()), Scalar(0,0,0), -1);
 			max->x += (templ.cols+1)/2;
 			max->y += (templ.rows+1)/2;
 			matches[i].push_back(*max);
-			circle(matcherOutput, *max, COVERFAC*std::max(templGraph[i].height(), templGraph[i].width()),
-					Scalar(0,0,0), -1);
-			//This output messes up searching, do not use
-//			std::stringstream s;
-//			s << i << ", " << j;
-//			rectangle(matcherOutput, Point(50, 50), Point(100, 75),Scalar(0,0,0), -1);
-//			putText(matcherOutput, s.str() ,Point(50,50),0,1,Scalar(1,0,0) );
-
-//			testutils::showImg(matcherOutput);
+						testutils::showImg(matcherOutput);
 		}
-
-	//make combinations
-	vector<Graph> graphs;
-
 	}
 
-	//construct graphs and test them
+	vector<Point> ms;	
+	for(int i = 0; i < matches.size() * TOPN; i++)
+		ms.push_back(matches[i/matches.size()][i%matches.size()]);	
+	dispLoc(target, ms);
+	//make combinations 
+	int numCombos = pow(TOPN, matches.size()); 
+	std::cout << numCombos << "\n";
+	std::vector<Graph> graphs = std::vector<Graph>(numCombos);
+	BaseNCounter b = BaseNCounter(TOPN, matches.size(), numCombos);
+	for(int i = 0; i < numCombos; i++) { 
+		std::vector<Node> tempNodes = std::vector<Node>();
+		for(int k = 0; k < matches.size(); k++)
+			tempNodes.push_back(Node(matches[k][ b[k] ]));
+		graphs[i] = Graph(tempNodes, templGraph.genMax());
+		b.incr(); 
+	}
+	std::cout << "Done with combinations" << "\n";
+
+	//find best match
+	Graph& best = graphs[0];
+	while(!checkGraph(best, std::max(templ.rows, templ.cols))) {
+		int bestSim;
+		Graph& best = graphs[0];
+		for(int i = 1; i <graphs.size(); i++){ 
+			int similarity = compareGraph(templGraph, graphs[i]);
+			if(bestSim > similarity) {
+				best= graphs[i];
+				bestSim = similarity;
+			}
+		}
+	}
+
+	std::vector<Point> bestGraphPoints = std::vector<Point>();
+	for(int i = 0; i < best.size(); i++) 
+		bestGraphPoints.push_back(Point(best[i].x(), best[i].y()));
+	dispLoc(target, bestGraphPoints);
+	
+	std::vector<Point> result = std::vector<Point>();
+	Point avg = Point(0,0);
+	for(int i = 0; i < bestGraphPoints.size(); i++)
+		avg += bestGraphPoints[i];
+	avg.x /= bestGraphPoints.size();
+	avg.y /= bestGraphPoints.size();
+	result.push_back(avg);
+	dispLoc(target, result);
 
 	//NOTES:
 	// *** before indicates done
@@ -120,6 +152,7 @@ int main2() {
 
 	return 0;
 }
+
 //Scales image so that largest dimension is MAXDIM px
 void resizeTarget(Mat& img) {
 	if(img.cols > MAXDIM && img.cols > img.rows) {
@@ -167,8 +200,8 @@ void process(Mat in, Mat& out, Size blurSize) {
 	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
 	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
 	threshold(out, out, LOWERTHRESH, UPPERTHRESH, THRESH_TOZERO);
-//	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(3, 5));
-//	erode(out, out, structure);
+	//	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(3, 5));
+	//	erode(out, out, structure);
 
 }
 //Outputs a rectangle of average size

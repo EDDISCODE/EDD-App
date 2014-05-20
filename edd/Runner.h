@@ -17,10 +17,10 @@
 #define UPPERTHRESH 255
 #define LOWERTHRESH 240
 //for Segmentation only
-#define TOPN 3
+#define TOPN 4 // !!!THROWS "COMMAND TERMINATED" WHEN >= 5!!!
 #define DIVROWS 3
 #define DIVCOLS 3
-#define COVERFAC 1.7
+#define COVERFAC 2
 
 using namespace cv;
 
