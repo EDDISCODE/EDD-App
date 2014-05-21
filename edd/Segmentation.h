@@ -23,7 +23,7 @@ public:
 	Node(Point p);
 	vector<Node*> adj;
 	Rect region;
-	Point location() { return Point(region.x, region.y); }
+	Point location();
 	int x() { return region.x; }
 	int y() { return region.y; }
 	int width() { return region.width; }

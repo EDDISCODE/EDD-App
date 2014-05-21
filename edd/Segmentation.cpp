@@ -66,6 +66,9 @@ Node::Node(Point p) {
 Node::Node() {
 	region = Rect(Point(0,0), Size(1,1));
 }
+Point Node::location() {
+	return Point(region.x, region.y);
+}
 //some constructors`
 Graph::Graph(){
 	adjMin = 0;
@@ -106,7 +109,7 @@ void Graph::addNode(Node n) {
 }
 //adds a node to the graph
 void Graph::addNode(Rect r) {
-	this->addNode(Node(r));
+	addNode(Node(r));
 }
 //computes adjacencies
 void Graph::computeAdj(int index) {

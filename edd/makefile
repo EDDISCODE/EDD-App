@@ -1,4 +1,4 @@
-CFLAGS=-Wno-sign-compare -Wno-write-strings -I/usr/include/opencv -I/usr/include/opencv2 -L/usr/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_objdetect -lopencv_legacy -lopencv_features2d
+CFLAGS=-g -Wno-sign-compare -Wno-write-strings -I/usr/include/opencv -I/usr/include/opencv2 -L/usr/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_objdetect -lopencv_legacy -lopencv_features2d
 
 all: go
 

@@ -12,14 +12,16 @@
 #include "Segmentation.h"
 
 //Control panel
+#define TARGET_PATH "/home/cgs/school/edd/test1.jpg"
+#define TEMPL_PATH "/home/cgs/school/edd/testtmp2.jpg"
 #define MAXDIM 1024.0
-#define BLURDIVISOR 200
+#define BLURDIVISOR 100 
 #define UPPERTHRESH 255
 #define LOWERTHRESH 240
 //for Segmentation only
-#define TOPN 4 // !!!THROWS "COMMAND TERMINATED" WHEN >= 5!!!
-#define DIVROWS 3
-#define DIVCOLS 3
+#define TOPN 5 // !!!THROWS "COMMAND TERMINATED" WHEN >= 5!!!
+#define DIVROWS 2
+#define DIVCOLS 2
 #define COVERFAC 2
 
 using namespace cv;

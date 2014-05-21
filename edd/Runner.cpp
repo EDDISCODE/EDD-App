@@ -23,12 +23,12 @@ int main1() {
 	}
 	else avgRect = locs[0];
 
-	process(target, target);
-	//testutils::showImg(target);
+	process(target, target, genBlurSize(target));
+	testutils::showImg(target);
 	Mat templ = imread(templPath);
 	resizeTemplate(templ, avgRect);
 	process(templ, templ, genBlurSize(target));
-	//testutils::showImg(templ);
+	testutils::showImg(templ);
 
 	Mat1f matcherOutput;
 	Point* max = new Point();
@@ -47,8 +47,8 @@ int main1() {
 //segmented main
 int main2() {
 	using namespace segmentation;
-	string targetPath = "/home/cgs/school/edd/test7.jpg";
-	string templPath = "/home/cgs/school/edd/testtmp1.jpg";
+	string targetPath = TARGET_PATH;
+	string templPath = TEMPL_PATH; 
 
 	Mat target = imread(targetPath);
 	resizeTarget(target);
@@ -64,17 +64,19 @@ int main2() {
 	else avgRect = locs[0];
 
 	process(target, target);
-	//testutils::showImg(target);
+	testutils::showImg(target);
 	Mat templ = imread(templPath);
 	resizeTemplate(templ, avgRect);
-	process(templ, templ);
-	//testutils::showImg(templ);
-
+	process(templ, templ);		
+	testutils::showImg(templ);
+	 
+	std::cout << "generating template graph \n";
 	//generating template graph
 	vector<Rect> parts;
 	divImg(templ, DIVROWS, DIVCOLS, parts);
 	Graph templGraph = Graph(parts, -1);
-
+	
+	std::cout << "searching for regions \n";
 	//search for each region, taking top three location matches from each
 	std::vector<std::vector<Point> > matches = std::vector<std::vector<Point> >(DIVROWS*DIVCOLS);
 	for(int i = 0; i < matches.size(); i++) {
@@ -88,16 +90,22 @@ int main2() {
 			max->x += (templ.cols+1)/2;
 			max->y += (templ.rows+1)/2;
 			matches[i].push_back(*max);
-						testutils::showImg(matcherOutput);
+			//testutils::showImg(matcherOutput);
 		}
 	}
-
-	vector<Point> ms;	
-	for(int i = 0; i < matches.size() * TOPN; i++)
-		ms.push_back(matches[i/matches.size()][i%matches.size()]);	
+	
+	std::cout << "showing matches \n";
+	//show matches
+	std::vector<Point> ms = std::vector<Point>();	
+	for(int i = 0; i < matches.size(); i++) {
+		for(int j = 0; j < TOPN; j++)
+			ms.push_back(matches[i][j]);	
+	}
 	dispLoc(target, ms);
+
+	std::cout << "making combinations \n";
 	//make combinations 
-	int numCombos = pow(TOPN, matches.size()); 
+	int numCombos = pow(TOPN, DIVCOLS * DIVROWS); 
 	std::cout << numCombos << "\n";
 	std::vector<Graph> graphs = std::vector<Graph>(numCombos);
 	BaseNCounter b = BaseNCounter(TOPN, matches.size(), numCombos);
@@ -108,35 +116,55 @@ int main2() {
 		graphs[i] = Graph(tempNodes, templGraph.genMax());
 		b.incr(); 
 	}
+
 	std::cout << "Done with combinations" << "\n";
+	std::cout << "Finding best match \n";
 
 	//find best match
 	Graph& best = graphs[0];
-	while(!checkGraph(best, std::max(templ.rows, templ.cols))) {
+	int bestInd = 0;
+	bool okay = false;
+	while(!okay) { 
 		int bestSim;
 		Graph& best = graphs[0];
 		for(int i = 1; i <graphs.size(); i++){ 
 			int similarity = compareGraph(templGraph, graphs[i]);
 			if(bestSim > similarity) {
 				best= graphs[i];
+				bestInd = i;
 				bestSim = similarity;
 			}
 		}
+		okay = checkGraph(best, std::max(templ.rows, templ.cols) + 20, 0); //PROBLEM HERE
+		if(!okay){
+			std::cout << "checking" << bestInd << "\n" ;
+			graphs.erase(graphs.begin() + bestInd); 
+			bestInd = 0;
+		}
 	}
+	
+	std::cout << "Found best match \n";
+	std::cout << "Displaying best graph points \n";
 
+	//display best graph points
 	std::vector<Point> bestGraphPoints = std::vector<Point>();
 	for(int i = 0; i < best.size(); i++) 
-		bestGraphPoints.push_back(Point(best[i].x(), best[i].y()));
+		bestGraphPoints.push_back(best[i].location());
 	dispLoc(target, bestGraphPoints);
+
+	std::cout << "Best graph points displayed \n";
+	std::cout << "Finding and displaying avg point \n";
 	
 	std::vector<Point> result = std::vector<Point>();
 	Point avg = Point(0,0);
 	for(int i = 0; i < bestGraphPoints.size(); i++)
 		avg += bestGraphPoints[i];
-	avg.x /= bestGraphPoints.size();
-	avg.y /= bestGraphPoints.size();
+	avg.x = avg.x /  bestGraphPoints.size();
+	avg.y = avg.y / bestGraphPoints.size();
 	result.push_back(avg);
 	dispLoc(target, result);
+
+	std::cout << "Best match avg displayed \n";
 
 	//NOTES:
 	// *** before indicates done
@@ -191,17 +219,18 @@ void process(Mat in, Mat& out, Size blurSize) {
 	}
 	GaussianBlur(in, out, blurSize, 0, 0, 1);
 	Mat x, y, x1, y1;
-	Scharr(out, x, 0, 1, 0, 1);
-	Scharr(out, y, 0, 0, 1, 1);
-	Scharr(out, x1, 0, 1, 0, -1);
-	Scharr(out, y1, 0, 0, 1, -1);
-	double addWeight = 1;
-	addWeighted(x, addWeight, y, addWeight, 0, x, -1);
-	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
-	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
-	threshold(out, out, LOWERTHRESH, UPPERTHRESH, THRESH_TOZERO);
+//	Scharr(out, x, 0, 1, 0, 1);
+//	Scharr(out, y, 0, 0, 1, 1);
+//	Scharr(out, x1, 0, 1, 0, -1);
+//	Scharr(out, y1, 0, 0, 1, -1);
+//	double addWeight = 1;
+//	addWeighted(x, addWeight, y, addWeight, 0, x, -1);
+//	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
+//	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
 	//	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(3, 5));
 	//	erode(out, out, structure);
+	Laplacian(in, out, 0, 11);
+	threshold(out, out, LOWERTHRESH, UPPERTHRESH, THRESH_TOZERO);
 
 }
 //Outputs a rectangle of average size
