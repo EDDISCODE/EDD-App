@@ -2,13 +2,15 @@
 
 int main() {
 	//main1();
-	main2();
+//	main2();
+	main3();
+	//main4();
 	return 0;
 }
 //standard main
 int main1() {
-	string targetPath = "/home/cgs/school/edd/test7.jpg";
-	string templPath = "/home/cgs/school/edd/testtmp2.jpg";
+	string targetPath = TARGET_PATH;
+	string templPath = TEMPL_PATH;
 
 	Mat target = imread(targetPath);
 	resizeTarget(target);
@@ -135,11 +137,10 @@ int main2() {
 				bestSim = similarity;
 			}
 		}
-		okay = checkGraph(best, std::max(templ.rows, templ.cols) + 20, 0); //PROBLEM HERE
+		okay = checkGraph(best, std::max(templ.rows, templ.cols), 0); //PROBLEM HERE
 		if(!okay){
 			std::cout << "checking" << bestInd << "\n" ;
 			graphs.erase(graphs.begin() + bestInd); 
-			bestInd = 0;
 		}
 	}
 	
@@ -166,20 +167,208 @@ int main2() {
 
 	std::cout << "Best match avg displayed \n";
 
-	//NOTES:
-	// *** before indicates done
+	return 0;
+}
 
-	//***FIND TOP N FOR EACH PIECE
-	//*** try not using degenerate edge pieces to avoid wierd matcher output
-	//*** some circles not showing up because height is too small (degenerates)
-	// ***ake sure covering right places
-	//***use putText() to number images (didn't work well, see note in place)
+int main3() {
+	using namespace segmentation;
+	string targetPath = TARGET_PATH;
+	string templPath = TEMPL_PATH; 
 
-	//take the combination that will create a structure most like the template graph
-	//measure likeness by number of matching connections
+	Mat target = imread(targetPath);
+	resizeTarget(target);
+	cvtColor(target, target, CV_BGR2GRAY);
+
+	std::vector<Rect> locs;
+	findComparator(target, locs);
+	dispLoc(target, locs);
+	Rect avgRect;
+	if(locs.size() > 1) {
+		avgRect = getAvgRect(locs);
+	}
+	else avgRect = locs[0];
+
+	process(target, target);
+	testutils::showImg(target);
+	Mat templ = imread(templPath);
+	
+	std::cout << avgRect.width << ", " <<avgRect.height;
+	resizeTemplate(templ, avgRect);
+	process(templ, templ, genBlurSize(target), true);		
+	testutils::showImg(templ);
+	 
+	std::cout << "generating template graph \n";
+	//generating template graph
+	vector<Rect> parts;
+	divImg(templ, DIVROWS, DIVCOLS, parts);
+	Graph templGraph = Graph(parts, -1);
+	
+	std::cout << "searching for regions \n";
+	//search for each region, taking top n location matches from each
+	Rect headRect = Rect(Point(avgRect.x, avgRect.y), Size((int)(avgRect.width*1.2), (int)(avgRect.height*1.2)));
+	std::vector<std::vector<Point> > matches = std::vector<std::vector<Point> >(DIVROWS*DIVCOLS);
+	for(int i = 0; i < matches.size(); i++) {
+		Mat1f matcherOutput;
+		matchTemplate(target, Mat(templ, templGraph[i].region), matcherOutput, CV_TM_CCORR);
+		normalize(matcherOutput, matcherOutput, 1, 0, NORM_MINMAX, -1);
+		for(int j = 0; j < TOPN; j++) {
+			Point* max = new Point();
+			minMaxLoc(matcherOutput, NULL, NULL, NULL, max);
+			circle(matcherOutput, *max, COVERFAC*std::max(templGraph[i].height(), templGraph[i].width()), Scalar(0,0,0), -1);
+			max->x += (templ.cols+1)/2;
+			max->y += (templ.rows+1)/2;
+			if(headRect.contains(*max))
+				--j;
+			else
+				matches[i].push_back(*max);
+		}
+	}
+	
+	std::cout << "showing matches \n";
+	//show matches
+	std::vector<Point> ms = std::vector<Point>();	
+	for(int i = 0; i < matches.size(); i++) {
+		for(int j = 0; j < TOPN; j++)
+			ms.push_back(matches[i][j]);	
+	}
+	dispLoc(target, ms);
+
+	std::cout << "finding best \n";
+	//find place with most matches
+	cv::Rect *slider;
+	int xincr = target.rows/XDIV ;
+	int yincr = target.cols/YDIV ;
+	std::vector<int> sliderCounts;
+	for(int i = 0; i < YDIV; i++) {
+		for(int ii = 0; ii < XDIV; ii++) {
+			int count = 0;
+			slider = new cv::Rect(Point(ii*xincr, i*yincr), Size(xincr, yincr));
+			for(int j = 0; j < matches.size(); j++) {
+				for(int k = 0; k < TOPN; k++) {
+					if(slider->contains(matches[j][k]) && !(avgRect.contains(matches[j][k])))
+							count++;
+				}	
+			}
+			sliderCounts.push_back(count);
+		}
+	}
+
+	//find max count
+	int maxCount = 0;
+	int bestInd = 0;
+	for(int i = 0; i < sliderCounts.size(); i++) {
+		if(sliderCounts[i] > maxCount) {
+			maxCount = sliderCounts[i];
+			bestInd = i;
+		}
+	}
+
+	std::cout << "Showing best  \n";
+	//best rect
+	cv::Rect *best = new Rect(Point(xincr*(bestInd % XDIV),yincr*(bestInd / YDIV)), Size(xincr, yincr));
+	std::vector<cv::Rect> bestR = std::vector<cv::Rect>();
+	bestR.push_back(*best);
+	dispLoc(target, bestR);
+
+
+	
 
 	return 0;
 }
+
+int main4() {
+	string targetPath = TARGET_PATH;
+	string templPath = TEMPL_PATH;
+
+	Mat target = imread(targetPath);
+	resizeTarget(target);
+	cvtColor(target, target, CV_BGR2GRAY);
+
+	vector<Rect> locs;
+	findComparator(target, locs);
+	dispLoc(target, locs);
+	Rect avgRect;
+	if(locs.size() > 1) {
+		avgRect = getAvgRect(locs);
+	}
+	else avgRect = locs[0];
+
+	process(target, target, genBlurSize(target));
+	testutils::showImg(target);
+	Mat templ = imread(templPath);
+	resizeTemplate(templ, avgRect);
+	process(templ, templ, genBlurSize(target));
+	testutils::showImg(templ);
+	
+	Rect headRect = Rect(Point(avgRect.x, avgRect.y), Size((int)(avgRect.width*1.2), (int)(avgRect.height*1.2)));
+
+	Mat1f matcherOutput;
+	Point* max = new Point();
+	matchTemplate(target, templ, matcherOutput, CV_TM_CCORR);
+	normalize(matcherOutput, matcherOutput, 1, 0, NORM_MINMAX, -1);
+
+	//find matches
+	std::vector<Point> matches = std::vector<Point>();
+	for(int j = 0; j < 100; j++) {
+		Point* max = new Point();
+		minMaxLoc(matcherOutput, NULL, NULL, NULL, max);
+		circle(matcherOutput, *max, COVERFAC*templ.rows*.5, Scalar(0,0,0), -1);
+		max->x += (templ.cols+1)/2;
+		max->y += (templ.rows+1)/2;
+		if(headRect.contains(*max))
+			--j;
+		else
+			matches.push_back(*max);
+		//if(j%10 == 0)
+		//testutils::showImg(matcherOutput);
+	}
+
+	std::cout << "showing matches \n";
+	//show matches
+	std::vector<Point> ms = std::vector<Point>();	
+	for(int i = 0; i < matches.size(); i++) {
+			ms.push_back(matches[i]);	
+	}
+	dispLoc(target, ms);
+
+	
+	cv::Rect *slider;
+	int xincr = target.rows/XDIV - 1;
+	int yincr = target.cols/YDIV - 1;
+	std::vector<int> sliderCounts;
+	for(int i = 0; i < XDIV; i++) {
+		for(int ii = 0; ii < YDIV; ii++) {
+			int count = 0;
+			slider = new cv::Rect(Point(i*xincr, ii*yincr), Size(xincr, yincr));
+			for(int j = 0; j < matches.size(); j++) {
+				if(slider->contains(matches[j]) && !(avgRect.contains(matches[j])))
+					count++;
+			}	
+			sliderCounts.push_back(count);
+		}
+	}
+	
+
+	//find max count
+	int maxCount = 0;
+	int bestInd = 0;
+	for(int i = 0; i < sliderCounts.size(); i++) {
+		if(sliderCounts[i] > maxCount) {
+			maxCount = sliderCounts[i];
+			bestInd = i;
+		}
+	}
+
+	//best rect
+	cv::Rect *best = new Rect(Point(xincr*(bestInd / XDIV), yincr*(bestInd % YDIV)), Size(xincr, yincr));
+	std::vector<cv::Rect> bestR = std::vector<cv::Rect>();
+	bestR.push_back(*best);
+	dispLoc(target, bestR);
+	
+	return 0;
+
+}
+
 
 //Scales image so that largest dimension is MAXDIM px
 void resizeTarget(Mat& img) {
@@ -208,7 +397,7 @@ bool findComparator(Mat img, vector<Rect>& locs, string classifierPath) {
 	return true;
 }
 //Processing function for template and img
-void process(Mat in, Mat& out, Size blurSize) {
+void process(Mat in, Mat& out, Size blurSize, bool isTempl) {
 	if(in.channels() > 1)
 		cvtColor(in, in, CV_BGR2GRAY);
 	if(blurSize.width <= 0 || blurSize.height <= 0)
@@ -218,18 +407,16 @@ void process(Mat in, Mat& out, Size blurSize) {
 		if(blurSize.height % 2 == 0) blurSize.height++;
 	}
 	GaussianBlur(in, out, blurSize, 0, 0, 1);
-	Mat x, y, x1, y1;
-//	Scharr(out, x, 0, 1, 0, 1);
-//	Scharr(out, y, 0, 0, 1, 1);
-//	Scharr(out, x1, 0, 1, 0, -1);
-//	Scharr(out, y1, 0, 0, 1, -1);
-//	double addWeight = 1;
-//	addWeighted(x, addWeight, y, addWeight, 0, x, -1);
-//	addWeighted(x1, addWeight, y1, addWeight, 0, x1, -1);
-//	addWeighted(x, addWeight, x1, addWeight, 0, out, -1);
-	//	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(3, 5));
-	//	erode(out, out, structure);
+
+	if(isTempl) {
+		//GaussianBlur(out, out,Size(blurSize.width*2+1, blurSize.height*2+1), 0, 0, 1);
+	}
+
 	Laplacian(in, out, 0, 11);
+	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(2, 4));
+	erode(out, out, structure);
+	Mat structure1 = getStructuringElement(MORPH_ELLIPSE, Size(4, 2));
+	erode(out, out, structure1);
 	threshold(out, out, LOWERTHRESH, UPPERTHRESH, THRESH_TOZERO);
 
 }
@@ -281,20 +468,31 @@ void dispLoc(Mat img, vector<Point> points) {
 	if(img.channels() == 1)
 		cvtColor(img, img, CV_GRAY2BGR);
 	for(int i = 0; i < points.size(); i++)
-		rectangle(img, points[i], points[i]+Point(20, 20), Scalar(0,255,0), 3);
+		rectangle(img, points[i], points[i]+Point(10, 10), Scalar(0,255,0), 3);
 	testutils::showImg(img);
+	static int counter = 100;
+	counter++;
+	std::stringstream s;
+	s<< counter << ".jpg";
+	imwrite(s.str() , img);
 }
 //Displays the rectangles
 void dispLoc(Mat img, vector<Rect> rects) {
 	if(img.channels() == 1)
 		cvtColor(img, img, CV_GRAY2BGR);
+
 	for(int i = 0; i < rects.size(); i++){
 		Rect r = rects[i];
 		Point p1 = Point(r.x + r.width, r.y + r.height);
 		Point p2 = Point(r.x, r.y);
-		rectangle(img, p1, p2, Scalar(0,0,255), 2);
+		rectangle(img, p1, p2, Scalar(0,0,255), (int)(img.rows*0.005)+2);
 	}
 	testutils::showImg(img);
+	static int counter = 0;
+	counter++;
+	std::stringstream s;
+	s<< counter << ".jpg";
+	imwrite(s.str() , img);
 }
 //Weights things based on distance from the vertical line running through the comparator
 void distanceWeight(Mat& img, Rect comparator){
