@@ -192,6 +192,7 @@ int main3() {
 	testutils::showImg(target);
 	Mat templ = imread(templPath);
 	
+	std::cout << avgRect.width << ", " <<avgRect.height;
 	resizeTemplate(templ, avgRect);
 	process(templ, templ, genBlurSize(target), true);		
 	testutils::showImg(templ);
@@ -235,14 +236,13 @@ int main3() {
 	std::cout << "finding best \n";
 	//find place with most matches
 	cv::Rect *slider;
+	int xincr = target.rows/XDIV ;
+	int yincr = target.cols/YDIV ;
 	std::vector<int> sliderCounts;
-
-	int xsz =templ.cols;
-	int ysz =templ.cols;
-	for(int i = 0; i < (target.rows-ysz); i+=YDIV) {
-		for(int ii = 0; ii < (target.cols-xsz); ii+=XDIV) {
+	for(int i = 0; i < YDIV; i++) {
+		for(int ii = 0; ii < XDIV; ii++) {
 			int count = 0;
-			slider = new cv::Rect(Point(ii, i), Size(xsz, ysz));
+			slider = new cv::Rect(Point(ii*xincr, i*yincr), Size(xincr, yincr));
 			for(int j = 0; j < matches.size(); j++) {
 				for(int k = 0; k < TOPN; k++) {
 					if(slider->contains(matches[j][k]) && !(avgRect.contains(matches[j][k])))
@@ -252,36 +252,23 @@ int main3() {
 			sliderCounts.push_back(count);
 		}
 	}
-	std::cout << "Number of slider counts:  " << sliderCounts.size() << "\n";
 
 	//find max count
 	int maxCount = 0;
-	std::vector<Point> bestInd = std::vector<Point>();
+	int bestInd = 0;
 	for(int i = 0; i < sliderCounts.size(); i++) {
 		if(sliderCounts[i] > maxCount) {
 			maxCount = sliderCounts[i];
-			bestInd = std::vector<Point>();
-			bestInd.push_back(Point(XDIV * (i % (target.cols / XDIV)), YDIV * (i / (target.rows / YDIV)) +  ysz));
-		}
-		else if(sliderCounts[i] == maxCount) {
-			bestInd.push_back(Point(XDIV * (i % (target.cols / XDIV)), YDIV * (i / (target.rows / YDIV)) + ysz));
+			bestInd = i;
 		}
 	}
-	std::cout << "Number of maximums:  "<< bestInd.size() << "\n";
 
 	std::cout << "Showing best  \n";
 	//best rect
-	std::vector<cv::Rect> *bestR = new std::vector<cv::Rect>();
-	for(int k = 0; k < bestInd.size(); k++) {
-		cv::Rect best = cv::Rect(bestInd[k], Size(xsz, ysz));
-		bestR->push_back(best);
-
-	}
-	std::cout << bestR->size() << "\n";
-	for(int i = 0; i < bestR->size(); i++)
-		std::cout << (*bestR)[i].x << ", " << (*bestR)[i].y << "\n";
-
-	dispLoc(target, *bestR);
+	cv::Rect *best = new Rect(Point(xincr*(bestInd % XDIV),yincr*(bestInd / YDIV)), Size(xincr, yincr));
+	std::vector<cv::Rect> bestR = std::vector<cv::Rect>();
+	bestR.push_back(*best);
+	dispLoc(target, bestR);
 
 
 	
@@ -421,19 +408,15 @@ void process(Mat in, Mat& out, Size blurSize, bool isTempl) {
 	}
 	GaussianBlur(in, out, blurSize, 0, 0, 1);
 
-	Laplacian(in, out, 0, 11);
 	if(isTempl) {
-	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(1, 2));
-	erode(out, out, structure);
-	Mat structure1 = getStructuringElement(MORPH_ELLIPSE, Size(2, 1));
-	erode(out, out, structure1);
+		//GaussianBlur(out, out,Size(blurSize.width*2+1, blurSize.height*2+1), 0, 0, 1);
 	}
-	else {
+
+	Laplacian(in, out, 0, 11);
 	Mat structure = getStructuringElement(MORPH_ELLIPSE, Size(2, 4));
 	erode(out, out, structure);
 	Mat structure1 = getStructuringElement(MORPH_ELLIPSE, Size(4, 2));
 	erode(out, out, structure1);
-	}
 	threshold(out, out, LOWERTHRESH, UPPERTHRESH, THRESH_TOZERO);
 
 }
